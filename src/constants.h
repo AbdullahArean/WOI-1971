@@ -3,6 +3,7 @@
 #define __constants__
 
 #include <iostream>
+#include<map> //map in TextureManager
 
 //Preprocessor to work with SDL
 #include <SDL2/SDL.h>

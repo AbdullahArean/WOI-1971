@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "constants.h"
+
 //Constructor
 Game::Game()
 {
@@ -12,17 +13,46 @@ Game::~Game()
 //SDL game initialization
 void Game::init(const char *title, int xpos, int ypos, int width, int height, int flags)
 {
+    /*#define SDL_INIT_EVERYTHING ( SDL_INIT_TIMER | SDL_INIT_AUDIO | SDL_INIT_VIDEO |
+SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER | SDL_INIT_SENSOR )*/
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
         fprintf(stderr, "Error initializing SDL.\n");
         m_bRunning = FALSE;
     } //end if
+      /*
+SDL_Window *SDL_CreateWindow(const char *title, int x, int y, int w, int h, Uint32 flags)
+Create a window with the specified position, dimensions, and flags.
+
+Parameters:
+title – The title of the window, in UTF-8 encoding.
+x – The x position of the window, ::SDL_WINDOWPOS_CENTERED, or ::SDL_WINDOWPOS_UNDEFINED.
+y – The y position of the window, ::SDL_WINDOWPOS_CENTERED, or ::SDL_WINDOWPOS_UNDEFINED.
+w – The width of the window, in screen coordinates.
+h – The height of the window, in screen coordinates.
+flags – The flags for the window, a mask of any of the following: ::SDL_WINDOW_FULLSCREEN, ::SDL_WINDOW_OPENGL, ::SDL_WINDOW_HIDDEN, ::SDL_WINDOW_BORDERLESS, ::SDL_WINDOW_RESIZABLE, ::SDL_WINDOW_MAXIMIZED, ::SDL_WINDOW_MINIMIZED, ::SDL_WINDOW_INPUT_GRABBED, ::SDL_WINDOW_ALLOW_HIGHDPI, ::SDL_WINDOW_VULKAN ::SDL_WINDOW_METAL.
+
+Returns:
+The created window, or NULL if window creation failed
+*/
     m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_RESIZABLE);
     if (!m_pWindow)
     {
         fprintf(stderr, "Error creating SDL Window.\n");
         m_bRunning = FALSE;
     } //end if
+      /*
+SDL_Renderer *SDL_CreateRenderer(SDL_Window *window, int index, Uint32 flags)
+Create a 2D rendering context for a window.
+
+Parameters:
+window – The window where rendering is displayed.
+index – The index of the rendering driver to initialize, or -1 to initialize the first one supporting the requested flags.
+flags – ::SDL_RendererFlags.
+
+Returns:
+A valid rendering context or NULL if there was an error.
+*/
     m_pRenderer = SDL_CreateRenderer(
         m_pWindow,
         -1,
@@ -33,7 +63,6 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, in
         fprintf(stderr, "Error creating SDL Renderer.\n");
         m_bRunning = FALSE;
     } //end if
-
     m_bRunning = TRUE;
 
 } //end funtion

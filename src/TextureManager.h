@@ -49,7 +49,7 @@ if (!TextureManager::Instance()->load("assets/a.png", "logo", m_pRenderer))
     }
 2. to Update
 use update function in game.cpp to update 
-3. to draw
+3. to draw plce it in renderer function
 TextureManager::Instance()->draw("a", 0,0, 120, 82,m_pRenderer);
 
 */

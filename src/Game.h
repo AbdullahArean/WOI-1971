@@ -25,7 +25,24 @@ public:
     //function to check if the game is over or not
     bool running();
 
+    // create the public instance function
+    static Game *Instance()
+    {
+        if (s_pInstance == 0)
+        {
+            s_pInstance = new Game();
+            return s_pInstance;
+        }
+        return s_pInstance;
+    }
+    //will return our SDL_Renderer object
+    SDL_Renderer* getRenderer() const { return m_pRenderer; }
 private:
+    // make the constructor private
+    Game();
+    // create the s_pInstance member variable
+	static Game *s_pInstance;
+
     //Creating a SDL_Window Pointer to display a window
     SDL_Window *m_pWindow;
     //Creating a SDL_Renderer Pointer to render everything

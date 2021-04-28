@@ -1,6 +1,6 @@
 #include "Game.h"
 #include "constants.h"
-
+Game *Game::s_pInstance = 0; //For Creating it as a singleton class for public instantiation
 //Constructor
 Game::Game()
 {

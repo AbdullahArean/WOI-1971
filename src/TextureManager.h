@@ -22,6 +22,9 @@ public:
 
     //drawFrame
     void drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer *pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
+    
+    //drawsame
+    void drawsame(std::string id, int x, int y, SDL_Renderer *pRenderer);
 
     //Instance function=>Singleton
     static TextureManager *Instance()
@@ -33,6 +36,8 @@ public:
         }
         return s_pInstance;
     }
+    //will return our SDL_Texture
+	SDL_Texture* getTexture(std::string id) { return m_textureMap[id]; }
 
     //function to remove a texture with specific texture ID
     void clearFromTextureMap(std::string id);

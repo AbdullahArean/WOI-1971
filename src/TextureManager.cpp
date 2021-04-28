@@ -61,7 +61,22 @@ Returns:
 */
     SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &desRect, 0, 0, flip);
 }
-
+//Draw
+void TextureManager::drawsame(std::string id, int x, int y, SDL_Renderer *pRenderer)
+{
+    //Two SDL Rectangle
+    SDL_Rect srcRect;
+    SDL_Rect desRect;
+    SDL_QueryTexture( getTexture(id), NULL, NULL, &srcRect.w, &srcRect.h);
+    // Simple dimension calculation
+    srcRect.x = 0;
+    srcRect.y = 0;
+    desRect.w=srcRect.w ;
+    desRect.h=srcRect.h;
+    desRect.x = x;
+    desRect.y = y;
+    SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &desRect, 0, 0, SDL_FLIP_NONE);
+}
 void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer *pRenderer, SDL_RendererFlip flip)
 {
     SDL_Rect srcRect;

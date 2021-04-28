@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "constants.h"
-Game *Game::s_pInstance = 0; //For Creating it as a singleton class for public instantiation
+#include"TextureManager.h"
+
 //Constructor
 Game::Game()
 {
@@ -63,6 +64,10 @@ A valid rendering context or NULL if there was an error.
         fprintf(stderr, "Error creating SDL Renderer.\n");
         m_bRunning = FALSE;
     } //end if
+    if (!TextureManager::Instance()->load("assets/woihomepage.png", "homepage", m_pRenderer))
+    {
+        m_bRunning = FALSE;
+    }
     m_bRunning = TRUE;
 
 } //end funtion
@@ -96,6 +101,7 @@ void Game::render()
     SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 0);
     // clear the window to black
     SDL_RenderClear(m_pRenderer);
+    TextureManager::Instance()->drawsame("homepage", 0,0,m_pRenderer);
     // show the window
     SDL_RenderPresent(m_pRenderer);
 }

@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "constants.h"
 #include"TextureManager.h"
-
+Game *Game::s_pInstance = 0;
 //Constructor
 Game::Game()
 {
@@ -12,7 +12,7 @@ Game::~Game()
 }
 
 //SDL game initialization
-void Game::init(const char *title, int xpos, int ypos, int width, int height, int flags)
+bool Game::init(const char *title, int xpos, int ypos, int width, int height, int flags)
 {
     /*#define SDL_INIT_EVERYTHING ( SDL_INIT_TIMER | SDL_INIT_AUDIO | SDL_INIT_VIDEO |
 SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER | SDL_INIT_SENSOR )*/
@@ -20,6 +20,7 @@ SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER 
     {
         fprintf(stderr, "Error initializing SDL.\n");
         m_bRunning = FALSE;
+        return FALSE;
     } //end if
       /*
 SDL_Window *SDL_CreateWindow(const char *title, int x, int y, int w, int h, Uint32 flags)
@@ -41,6 +42,7 @@ The created window, or NULL if window creation failed
     {
         fprintf(stderr, "Error creating SDL Window.\n");
         m_bRunning = FALSE;
+        return FALSE;
     } //end if
       /*
 SDL_Renderer *SDL_CreateRenderer(SDL_Window *window, int index, Uint32 flags)
@@ -63,12 +65,15 @@ A valid rendering context or NULL if there was an error.
     {
         fprintf(stderr, "Error creating SDL Renderer.\n");
         m_bRunning = FALSE;
+        return FALSE;
     } //end if
     if (!TextureManager::Instance()->load("assets/woihomepage.png", "homepage", m_pRenderer))
     {
         m_bRunning = FALSE;
+        return FALSE;
     }
     m_bRunning = TRUE;
+    return TRUE;
 
 } //end funtion
 
@@ -101,7 +106,10 @@ void Game::render()
     SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 0);
     // clear the window to black
     SDL_RenderClear(m_pRenderer);
+
+    //Using Texture Manager to Draw a picture as it is
     TextureManager::Instance()->drawsame("homepage", 0,0,m_pRenderer);
+    
     // show the window
     SDL_RenderPresent(m_pRenderer);
 }

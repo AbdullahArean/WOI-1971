@@ -3,7 +3,12 @@
 #define __constants__
 
 #include <iostream>
-#include<map> //map in TextureManager
+
+//map in TextureManager
+#include <map> 
+
+ //vector to keep GameObject
+#include <vector>
 
 //Preprocessor to work with SDL
 #include <SDL2/SDL.h>

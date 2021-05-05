@@ -1,37 +1,51 @@
+//It includes All the Header File
 #include "constants.h"
-int main(void)
-{
-    // attempt to initialize graphics and timer system
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) != 0)
-    {
-        printf("error initializing SDL: %s\n", SDL_GetError());
-        return 1;
-    }
 
-    SDL_Window *win = SDL_CreateWindow("WOI-1971",
-                                       SDL_WINDOWPOS_CENTERED,
-                                       SDL_WINDOWPOS_CENTERED,
-                                       WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+//Main Function
+int main(int argc, char *argv[])
+{
+    /*#define SDL_INIT_EVERYTHING ( SDL_INIT_TIMER | SDL_INIT_AUDIO | SDL_INIT_VIDEO |
+SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER | SDL_INIT_SENSOR )*/
+    if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+    {
+        fprintf(stderr, "Error initializing SDL.\n");
+        return 1;
+    } //end if
+
+    //Creating SDL_ Window
+    SDL_Window *win = SDL_CreateWindow(
+        "WOI-1971",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        WINDOW_WIDTH, WINDOW_HEIGHT,
+        SDL_WINDOW_SHOWN);
     if (!win)
     {
-        printf("error creating window: %s\n", SDL_GetError());
+        fprintf(stderr, "Error creating SDL Window.\n");
         SDL_Quit();
         return 1;
     }
 
     // create a renderer, which sets up the graphics hardware
     Uint32 render_flags = SDL_RENDERER_ACCELERATED;
+
+    //Creating A SDL Renderer
     SDL_Renderer *rend = SDL_CreateRenderer(win, -1, render_flags);
     if (!rend)
     {
-        printf("error creating renderer: %s\n", SDL_GetError());
+        fprintf(stderr, "Error creating SDL Renderer.\n");
         SDL_DestroyWindow(win);
         SDL_Quit();
         return 1;
     }
 
-    //========================================================================================
-    // load the image into memory using SDL_image library function
+    //game init successful message
+    printf("\nWW      WW  OOOOO  IIIII         1          7777777  1\nWW      WW OO   OO  III         111  99999      777 111\nWW   W  WW OO   OO  III  _____   11 99   99    777   11\n WW WWW WW OO   OO  III          11  999999   777    11\n  WW   WW   OOOO0  IIIII        111     99   777    111\n                                      999\n              \n");
+    printf("Game Started Successfully! Enjoy!\n");
+
+//========================================================================================
+// load the image into memory using SDL_image library function
+//1st page Loading
     SDL_Surface *surface1 = IMG_Load("assets/apage.png");
     if (!surface1)
     {
@@ -55,10 +69,10 @@ int main(void)
 
     // struct to hold the position and size of the sprite
     SDL_Rect dest1;
-    dest1.h=720;
-    dest1.w=1280;
-    dest1.x=0;
-    dest1.y=0;
+    dest1.h = 720;
+    dest1.w = 1280;
+    dest1.x = 0;
+    dest1.y = 0;
     // clear the window
     SDL_RenderClear(rend);
 
@@ -67,10 +81,9 @@ int main(void)
     SDL_RenderPresent(rend);
     SDL_Delay(5000);
     SDL_DestroyTexture(tex1);
-   
-
+//============================================================================================
 //2nd Page Loading
-   // load the image into memory using SDL_image library function
+    // load the image into memory using SDL_image library function
     surface1 = IMG_Load("assets/bpage.png");
     if (!surface1)
     {
@@ -92,7 +105,6 @@ int main(void)
         return 1;
     }
 
-  
     // clear the window
     SDL_RenderClear(rend);
 
@@ -101,8 +113,8 @@ int main(void)
     SDL_RenderPresent(rend);
     SDL_Delay(5000);
     SDL_DestroyTexture(tex1);
-//2nd Page Loading
-   // load the image into memory using SDL_image library function
+    //2nd Page Loading
+    // load the image into memory using SDL_image library function
     surface1 = IMG_Load("assets/back.png");
     if (!surface1)
     {
@@ -123,7 +135,8 @@ int main(void)
         SDL_Quit();
         return 1;
     }
-    //==========================================================================================================
+//==========================================================================================================
+//Loading Enemy
     SDL_Surface *surface3 = IMG_Load("assets/enemy1.png");
     if (!surface3)
     {
@@ -145,16 +158,17 @@ int main(void)
         SDL_Quit();
         return 1;
     }
-        // struct to hold the position and size of the sprite
+    // struct to hold the position and size of the sprite
     SDL_Rect dest3;
 
     // get and scale the dimensions of texture
     dest3.x = 1000;
     dest3.y = 300;
-    dest3.w =113;
+    dest3.w = 113;
     dest3.h = 160;
 
-    // load the image into memory using SDL_image library function
+//================================================================================================
+//Loading & Rendering Hero Picture
     SDL_Surface *surface = IMG_Load("assets/hero1.png");
     if (!surface)
     {
@@ -231,6 +245,8 @@ int main(void)
                 case SDL_SCANCODE_RIGHT:
                     right = 1;
                     break;
+                default:
+                    break;
                 }
                 break;
             case SDL_KEYUP:
@@ -251,6 +267,8 @@ int main(void)
                 case SDL_SCANCODE_D:
                 case SDL_SCANCODE_RIGHT:
                     right = 0;
+                    break;
+                default:
                     break;
                 }
                 break;

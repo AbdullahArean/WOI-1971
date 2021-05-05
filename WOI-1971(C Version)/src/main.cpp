@@ -43,9 +43,9 @@ SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER 
     printf("\nWW      WW  OOOOO  IIIII         1          7777777  1\nWW      WW OO   OO  III         111  99999      777 111\nWW   W  WW OO   OO  III  _____   11 99   99    777   11\n WW WWW WW OO   OO  III          11  999999   777    11\n  WW   WW   OOOO0  IIIII        111     99   777    111\n                                      999\n              \n");
     printf("Game Started Successfully! Enjoy!\n");
 
-//========================================================================================
-// load the image into memory using SDL_image library function
-//1st page Loading
+    //========================================================================================
+    // load the image into memory using SDL_image library function
+    //1st page Loading
     SDL_Surface *surface1 = IMG_Load("assets/apage.png");
     if (!surface1)
     {
@@ -81,8 +81,40 @@ SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER 
     SDL_RenderPresent(rend);
     SDL_Delay(5000);
     SDL_DestroyTexture(tex1);
-//============================================================================================
-//2nd Page Loading
+
+    //======================================================================================================
+    //Last Page Load
+    //1st page Loading
+    SDL_Surface *surfacel = IMG_Load("assets/lpage.png");
+    if (!surfacel)
+    {
+        printf("error creating surface\n");
+        SDL_DestroyRenderer(rend);
+        SDL_DestroyWindow(win);
+        SDL_Quit();
+        return 1;
+    }
+    // load the image data into the graphics hardware's memory
+    SDL_Texture *texl = SDL_CreateTextureFromSurface(rend, surfacel);
+    SDL_FreeSurface(surfacel);
+    if (!texl)
+    {
+        printf("error creating texture: %s\n", SDL_GetError());
+        SDL_DestroyRenderer(rend);
+        SDL_DestroyWindow(win);
+        SDL_Quit();
+        return 1;
+    }
+
+    // struct to hold the position and size of the sprite
+    SDL_Rect destl;
+    destl.h = 720;
+    destl.w = 1280;
+    destl.x = 0;
+    destl.y = 0;
+
+    //============================================================================================
+    //2nd Page Loading
     // load the image into memory using SDL_image library function
     surface1 = IMG_Load("assets/bpage.png");
     if (!surface1)
@@ -111,9 +143,39 @@ SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER 
     // draw the image to the window
     SDL_RenderCopy(rend, tex1, NULL, &dest1);
     SDL_RenderPresent(rend);
-    SDL_Delay(5000);
     SDL_DestroyTexture(tex1);
-    //2nd Page Loading
+
+    while (game_running)
+    {
+        // process events
+        SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+            switch (event.type)
+            {
+            case SDL_QUIT:
+                game_running = 0;
+                SDL_DestroyRenderer(rend);
+                SDL_DestroyWindow(win);
+                SDL_Quit();
+                break;
+            default:
+                break;
+            }
+        }
+        int mousex, mousey;
+        int buttons = SDL_GetMouseState(&mousex, &mousey);
+        if (buttons & SDL_BUTTON(SDL_BUTTON_LEFT))
+        {
+            printf("%d %d\n",mousex,mousey);
+            if (mousex >= 467 && mousex <= 827 && mousey >= 190 && mousey <= 285)
+            {
+                break;
+            }
+        }
+    }
+//=====================================================================
+    //background
     // load the image into memory using SDL_image library function
     surface1 = IMG_Load("assets/back.png");
     if (!surface1)
@@ -135,8 +197,8 @@ SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER 
         SDL_Quit();
         return 1;
     }
-//==========================================================================================================
-//Loading Enemy
+    //==========================================================================================================
+    //Loading Enemy
     SDL_Surface *surface3 = IMG_Load("assets/enemy1.png");
     if (!surface3)
     {
@@ -167,8 +229,8 @@ SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER 
     dest3.w = 113;
     dest3.h = 160;
 
-//================================================================================================
-//Loading & Rendering Hero Picture
+    //================================================================================================
+    //Loading & Rendering Hero Picture
     SDL_Surface *surface = IMG_Load("assets/hero1.png");
     if (!surface)
     {
@@ -212,7 +274,7 @@ SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER 
     int right = 0;
 
     // set to 1 when window close button is pressed
-    int game_running = 1;
+    game_running = 1;
 
     // animation loop
     while (game_running)
@@ -304,6 +366,7 @@ SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER 
         dest.y = (int)y_pos;
         dest.x = (int)x_pos;
 
+       
         // clear the window
         SDL_RenderClear(rend);
 
@@ -312,12 +375,22 @@ SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER 
         SDL_RenderCopy(rend, tex, NULL, &dest);
         SDL_RenderCopy(rend, tex3, NULL, &dest3);
         SDL_RenderPresent(rend);
+        
+         //Collision Detection
+        // if ((up!=0 || down!=0 || left!=0 || right!=0) && dest1.x >= (dest3.x - dest1.w) && dest1.x <= (dest3.x + dest3.w) && dest1.y >= (dest3.y - dest1.h) && dest1.y <= (dest3.y + dest3.h))
+        // {
+        //     printf("Yes Hero And Enemy Colided\n");
+            
+        // }
 
         // wait 1/60th of a second
         SDL_Delay(1000 / 60);
     }
-
+    printf("Game Successfully Quited!\n");
     // clean up resources before exiting
+    SDL_RenderCopy(rend, texl, NULL, &destl);
+    SDL_RenderPresent(rend);
+    SDL_Delay(5000);
     SDL_DestroyTexture(tex);
     SDL_DestroyRenderer(rend);
     SDL_DestroyWindow(win);

@@ -18,6 +18,8 @@
 #define FPS 60
 #define FRAME_TARGET_TIME (1000 / FPS)
 
+bool game_running=1;
+
 // speed in pixels/second
 #define SPEED (300)
 

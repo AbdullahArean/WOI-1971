@@ -67,7 +67,24 @@ A valid rendering context or NULL if there was an error.
         m_bRunning = FALSE;
         return FALSE;
     } //end if
+
+    //Loading All Images
     if (!TextureManager::Instance()->load("assets/woihomepage.png", "homepage", m_pRenderer))
+    {
+        m_bRunning = FALSE;
+        return FALSE;
+    }
+    // if (!TextureManager::Instance()->load("assets/enemy1.png", "enemy1", m_pRenderer))
+    // {
+    //     m_bRunning = FALSE;
+    //     return FALSE;
+    // }
+    if (!TextureManager::Instance()->load("assets/apage.png", "apage", m_pRenderer))
+    {
+        m_bRunning = FALSE;
+        return FALSE;
+    }
+    if (!TextureManager::Instance()->load("assets/logo.png", "logo", m_pRenderer))
     {
         m_bRunning = FALSE;
         return FALSE;
@@ -109,6 +126,7 @@ void Game::render()
 
     //Using Texture Manager to Draw a picture as it is
     TextureManager::Instance()->drawsame("homepage", 0,0,m_pRenderer);
+    TextureManager::Instance()->drawsame ("logo", 40, 200,m_pRenderer);
     
     // show the window
     SDL_RenderPresent(m_pRenderer);

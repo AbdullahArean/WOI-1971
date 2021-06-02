@@ -6,14 +6,15 @@
 
 //Destroying the window and the renderer
 void Clean(SDL_Window* win, SDL_Renderer* render);
+
 //Code Implementation
 void Clean(SDL_Window* win, SDL_Renderer* render)
 {
 
-    SDL_DestroyRenderer(render);
-    SDL_DestroyWindow(win);
-    IMG_Quit();
-    SDL_Quit();
+    SDL_DestroyRenderer(render);//Destroying Renderer
+    SDL_DestroyWindow(win);//Destroying Window
+    IMG_Quit();//Quiting SDL Image
+    SDL_Quit();//Quiting SDL
 }
 
 #endif 

@@ -3,6 +3,7 @@
 
 //Preprocessors
 #include "constants.h"
+
 typedef struct TextureManager
 {
 
@@ -35,8 +36,9 @@ typedef struct TextureManager
         // Simple dimension calculation
         srcRect.x = 0;
         srcRect.y = 0;
-        srcRect.w = desRect.w = width;
-        srcRect.h = desRect.h = height;
+        SDL_QueryTexture(pTexture, NULL, NULL, &srcRect.w, &srcRect.h);
+        desRect.w = width;
+        desRect.h = height;
         desRect.x = x;
         desRect.y = y;
         SDL_RenderCopyEx(pRenderer, pTexture, &srcRect, &desRect, 0, 0, flip);

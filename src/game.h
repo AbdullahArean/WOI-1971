@@ -3,24 +3,23 @@
 
 #include "constants.h"
 #include "player.h"
+#include"enemy.h"
 #include "mainmenu.h"
 #include "initialization.h"
-
+Player p1;
+Enemy e1;
+TextureManager TM1;
 typedef struct Game
 {
 
     void init()
     {
-        if (gameinitialization("WOI-1971", 100, 200, 1080, 720) == FALSE)
+        if (gameinitialization("WOI-1971", 100, 200, WINDOW_WIDTH, WINDOW_HEIGHT) == FALSE)
         {
             Clean(window, renderer);
             game_running = 0;
         };
-        mainmenuinit();
-        fpage = TM.ReturnTexture("assets/woinewhomepage.png", renderer);
-        TM.draw(0, 0, 1080, 720, fpage, renderer, SDL_FLIP_NONE);
-        SDL_RenderPresent(renderer);
-        SDL_Delay(5000);
+        //mainmenuinit();
     }
     void render()
     {
@@ -28,10 +27,8 @@ typedef struct Game
         // clear the window to black
         SDL_RenderClear(renderer);
         //First Page Loading
-        mainmenurender();
-        //p1.draw(0 , 400 , 60, 100, p1.ReturnPlayerTexture("assets/hero1.png", renderer), renderer, SDL_FLIP_NONE);
-
-        // show the window
+        //mainmenurender();
+        e1.draw(0,0,100,200,TM1.ReturnTexture("assets/storyp.png", renderer),renderer, SDL_FLIP_NONE);
         SDL_RenderPresent(renderer);
         //SDL_Delay(5000);
     }
@@ -55,6 +52,7 @@ typedef struct Game
     void update()
     {
         mainmenuupdate();
+        
     }
 
     void destroy_window()

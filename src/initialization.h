@@ -39,6 +39,21 @@ SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER 
         fprintf(stderr, "Error creating SDL Renderer.\n");
         return 1;
     }
+     
+      //Initializing Image-Subsystem
+  if(!IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG))
+  {
+      printf("Image Initialization Error: %s\n",SDL_GetError());
+      SDL_Quit();
+      IMG_Quit();
+      return false;
+  }
+  //game init successful message
+  if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) < 0 )
+  {
+      printf( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
+      return false;
+  }
 
     //game init successful message
     printf("\nWW      WW  OOOOO  IIIII         1          7777777  1\nWW      WW OO   OO  III         111  99999      777 111\nWW   W  WW OO   OO  III  _____   11 99   99    777   11\n WW WWW WW OO   OO  III          11  999999   777    11\n  WW   WW   OOOO0  IIIII        111     99   777    111\n                                      999\n              \n");

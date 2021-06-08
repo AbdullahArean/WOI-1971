@@ -19,7 +19,7 @@ typedef struct Game
             Clean(window, renderer);
             game_running = 0;
         };
-        //mainmenuinit();
+        mainmenuinit();
     }
     void render()
     {
@@ -27,8 +27,8 @@ typedef struct Game
         // clear the window to black
         SDL_RenderClear(renderer);
         //First Page Loading
-        //mainmenurender();
-        e1.draw(0,0,100,200,TM1.ReturnTexture("assets/storyp.png", renderer),renderer, SDL_FLIP_NONE);
+        mainmenurender();
+        p1.draw(0,0,100,200,TM1.ReturnTexture("assets/storyp.png", renderer),renderer, SDL_FLIP_NONE);
         SDL_RenderPresent(renderer);
         //SDL_Delay(5000);
     }

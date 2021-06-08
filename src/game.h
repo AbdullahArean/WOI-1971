@@ -2,13 +2,11 @@
 #define GAME_H
 
 #include "constants.h"
-#include "player.h"
-#include"enemy.h"
+#include "gameplay.h"
 #include "mainmenu.h"
 #include "initialization.h"
-Player p1;
-Enemy e1;
-TextureManager TM1;
+
+
 typedef struct Game
 {
 
@@ -22,16 +20,17 @@ typedef struct Game
         //Play the music.....
     Mix_Music *bMusic1 = Mix_LoadMUS("assets/firstpage.mp3");
     Mix_PlayMusic(bMusic1, -1);
-        mainmenuinit();
+     mainmenuinit();
+    gameplayinit();
+       
+   
     }
     void render()
     {
         SDL_RenderPresent(renderer);
         // clear the window to black
         SDL_RenderClear(renderer);
-        //First Page Loading
-        mainmenurender();
-        p1.draw(0,0,100,200,TM1.ReturnTexture("assets/enemy1.png", renderer),renderer, SDL_FLIP_NONE);
+        (gameplay==0)?mainmenurender():gameplayrender();
         SDL_RenderPresent(renderer);
         //SDL_Delay(5000);
     }
@@ -54,7 +53,7 @@ typedef struct Game
     }
     void update()
     {
-        mainmenuupdate();
+    (gameplay==0)? mainmenuupdate():gameplayupdate();
         
     }
 

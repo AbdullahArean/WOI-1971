@@ -1,3 +1,6 @@
+#ifndef MAINMENU_H
+#define MAINMENU_H
+
 #include "constants.h"
 #include"texturemanager.h"
 
@@ -50,14 +53,14 @@ void mainmenuupdate()
             // printf("%d %d\n", mousex, mousey);
             TM.drawsame(405, 95, conp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
-            next = 1; //change
+            gameplay = 1; //change
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 217 && mousey <= 217 + 91)
         {
             // printf("%d %d\n", mousex, mousey);
             TM.drawsame(405, 217, newgp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
-            next = 1; //change
+            gameplay= 1; //change
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 339 && mousey <= 339 + 91)
         {
@@ -80,3 +83,4 @@ void mainmenuupdate()
         }
     }
 }
+#endif

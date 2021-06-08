@@ -29,7 +29,7 @@
 //ALL The Global Varaiables Declared Here
 //variable to keep game state
 bool game_running = 1;
-int next = 0;
+int gameplay=0;
 int StoryScript = 0;
   
 

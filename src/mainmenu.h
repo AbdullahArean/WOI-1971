@@ -19,7 +19,8 @@ void mainmenuinit()
     settingsp = TM.ReturnTexture("assets/settingsp.png", renderer);
     storyp = TM.ReturnTexture("assets/storyp.png", renderer);
 
-    //Play the music.....
+    
+    //Playing the music for 1st page
     Mix_Music *bMusic1 = Mix_LoadMUS("assets/firstpage.mp3");
     Mix_PlayMusic(bMusic1, -1);
     //First Page Load
@@ -27,7 +28,12 @@ void mainmenuinit()
     TM.draw(0, 0, 1080, 720, fpage, renderer, SDL_FLIP_NONE);
     
     SDL_RenderPresent(renderer);
-    SDL_Delay(10000);
+    SDL_Delay(9000);
+    Mix_HaltMusic();//Stopping the 1st page music
+
+    //Playing the 2nd page music
+    Mix_Music *bMusic2 = Mix_LoadMUS("assets/secondpage.mp3");
+    Mix_PlayMusic(bMusic2, -1);
 }
 void mainmenurender()
 {
@@ -50,33 +56,33 @@ void mainmenuupdate()
 
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 95 && mousey <= 95 + 91)
         {
-            // printf("%d %d\n", mousex, mousey);
+            Mix_HaltMusic();
             TM.drawsame(405, 95, conp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
             gameplay = 1; //change
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 217 && mousey <= 217 + 91)
         {
-            // printf("%d %d\n", mousex, mousey);
+            Mix_HaltMusic();
             TM.drawsame(405, 217, newgp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
             gameplay= 1; //change
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 339 && mousey <= 339 + 91)
         {
-            // printf("%d %d\n", mousex, mousey);
+            Mix_HaltMusic();
             TM.drawsame(405, 339, hisp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 461 && mousey <= 461 + 91)
         {
-            // printf("%d %d\n", mousex, mousey);
+            Mix_HaltMusic();
             TM.drawsame(405, 461, settingsp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 583 && mousey <= 583 + 91)
         {
-            // printf("%d %d\n", mousex, mousey);
+            Mix_HaltMusic();
             TM.drawsame(405, 583, storyp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
             StoryScript = 1;

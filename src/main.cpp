@@ -12,9 +12,9 @@ int main(int argc, char *args[])
     //mainmenu();
     while(myfirstgame.running())
     {
-        myfirstgame.render();
         myfirstgame.handleEvents();
         myfirstgame.update();
+        myfirstgame.render();
     }
     close();
     myfirstgame.destroy_window();

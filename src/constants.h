@@ -58,12 +58,9 @@ SDL_Texture *storyp = NULL;
  
 SDL_Texture* background = NULL;
  
+
  
-//SDL Textures for Enemies
-SDL_Texture* enemy1  = NULL;//Change
-SDL_Texture* player  = NULL;//Change
- 
-//#define SPEED (300)
+#define SPEED (300)
 
 
 

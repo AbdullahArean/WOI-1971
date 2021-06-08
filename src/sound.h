@@ -5,14 +5,13 @@
 #include "constants.h"
  
 //Initializing
-Mix_Music *bMusic2 = NULL, *bMusic3 = NULL;
+Mix_Music *bMusic3 = NULL;
 Mix_Chunk *click = NULL, *bullet = NULL, *plane = NULL, *victory = NULL, *levelup = NULL, *death = NULL;
  
 //Loading the musics
 Mix_Music *bMusic1 = Mix_LoadMUS("assets/firstpage.mp3");
-
+Mix_Music *bMusic2 = Mix_LoadMUS("assets/secondpage.mp3");
 /*
-bMusic2 = Mix_LoadMUS(“Please enter the path of an mp3”);
 bMusic3 = Mix_LoadMUS(“Please enter the path of an mp3”);
 //Loading the sound effects
 bullet = Mix_LoadWAV(“Please enter the path of a wav or mp3”);

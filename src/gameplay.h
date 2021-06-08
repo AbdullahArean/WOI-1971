@@ -45,6 +45,7 @@ void gameplayrender()
 
 void gameplayupdate()
 {
+    p1.PlayerUpdate();
 
 }
 

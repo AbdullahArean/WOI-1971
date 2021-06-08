@@ -14,11 +14,14 @@ typedef struct Game
 
     void init()
     {
-        if (gameinitialization("WOI-1971", 100, 200, WINDOW_WIDTH, WINDOW_HEIGHT) == FALSE)
+        if (gameinitialization("WOI-1971", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT) == FALSE)
         {
             Clean(window, renderer);
             game_running = 0;
         };
+        //Play the music.....
+    Mix_Music *bMusic1 = Mix_LoadMUS("assets/firstpage.mp3");
+    Mix_PlayMusic(bMusic1, -1);
         mainmenuinit();
     }
     void render()
@@ -28,7 +31,7 @@ typedef struct Game
         SDL_RenderClear(renderer);
         //First Page Loading
         mainmenurender();
-        p1.draw(0,0,100,200,TM1.ReturnTexture("assets/storyp.png", renderer),renderer, SDL_FLIP_NONE);
+        p1.draw(0,0,100,200,TM1.ReturnTexture("assets/enemy1.png", renderer),renderer, SDL_FLIP_NONE);
         SDL_RenderPresent(renderer);
         //SDL_Delay(5000);
     }

@@ -15,9 +15,8 @@ int main(int argc, char *args[])
         myfirstgame.render();
         myfirstgame.handleEvents();
         myfirstgame.update();
-
-
     }
+    close();
     myfirstgame.destroy_window();
     SDL_Delay(3000);
     return 0;

@@ -1,5 +1,6 @@
 #include "constants.h"
 #include"texturemanager.h"
+
 TextureManager TM;
 void mainmenuinit()
 {
@@ -15,11 +16,15 @@ void mainmenuinit()
     settingsp = TM.ReturnTexture("assets/settingsp.png", renderer);
     storyp = TM.ReturnTexture("assets/storyp.png", renderer);
 
+    //Play the music.....
+    Mix_Music *bMusic1 = Mix_LoadMUS("assets/firstpage.mp3");
+    Mix_PlayMusic(bMusic1, -1);
     //First Page Load
     fpage = TM.ReturnTexture("assets/woinewhomepage.png", renderer);
     TM.draw(0, 0, 1080, 720, fpage, renderer, SDL_FLIP_NONE);
+    
     SDL_RenderPresent(renderer);
-    SDL_Delay(2000);
+    SDL_Delay(10000);
 }
 void mainmenurender()
 {
@@ -71,6 +76,7 @@ void mainmenuupdate()
             // printf("%d %d\n", mousex, mousey);
             TM.drawsame(405, 583, storyp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            StoryScript = 1;
         }
     }
 }

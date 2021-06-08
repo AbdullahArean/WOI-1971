@@ -9,6 +9,7 @@
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_ttf.h>
  
  
  
@@ -29,11 +30,13 @@
 //variable to keep game state
 bool game_running = 1;
 int next = 0;
+int StoryScript = 0;
   
 
 
 #include "clean.h"
 #include "sound.h"
+#include "font.h"
  
 //SDL Window & Renderer
 SDL_Window *window;

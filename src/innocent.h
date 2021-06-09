@@ -1,28 +1,26 @@
-#ifndef ENEMY_H
-#define ENEMY_H
+#ifndef INNOCENT_H
+#define INNOCENT_H
 
 #include "constants.h"
 
-typedef struct Enemy{
+typedef struct Innocent{
 //Global Variables
     SDL_Rect srcRect;
     SDL_Rect desRect;
-    
-    //Scoring Variable
-    int ehealth=100;
-    int erunninghealth;
-    int ecollision;
-
-
     double psi_x = WINDOW_WIDTH-160;
     double psi_y = WINDOW_HEIGHT-180-row3;
-    double x_vel = 30;
+    double x_vel = 100;
     double y_vel = 30;
     bool ft=0;
 
+    //Scoring Variable
+    int ihealth=100;
+    int irunninghealth;
+    int icollision;
+
 
     //Draw
-    void EnemyRender(int x, int y, int width, int height, SDL_Texture *pTexture, SDL_Renderer *pRenderer, SDL_RendererFlip flip)
+    void InnocentRender(int x, int y, int width, int height, SDL_Texture *pTexture, SDL_Renderer *pRenderer, SDL_RendererFlip flip)
     {
         // Simple dimension calculation
         srcRect.x = 0;
@@ -35,18 +33,13 @@ typedef struct Enemy{
         SDL_RenderCopyEx(pRenderer, pTexture, &srcRect, &desRect, 0, 0, flip);
         //SDL_RenderPresent(pRenderer);
     }
-    void enemyupdate(double row, double v_vel)
+    void Innocentupdate(double row, double v_vel)
     {
-        // update positions
-        
         if(ft==0) {x_vel=v_vel; ft=1;}
+        // update positions
         psi_x -= x_vel*delta_time; //x_vel ;// 60;
         psi_y -=  y_vel*delta_time;//y_vel;// 60;
-        
-        // collision detection with bounds
-        if (psi_x >= WINDOW_WIDTH-desRect.w)
-            {psi_x = WINDOW_WIDTH-desRect.w;
-            x_vel= (-1)*x_vel;}
+
         if (psi_y > WINDOW_HEIGHT-desRect.h)
             psi_y = WINDOW_HEIGHT-desRect.h;
         if (psi_x < WINDOW_WIDTH/2 - desRect.w)
@@ -60,11 +53,11 @@ typedef struct Enemy{
         desRect.x = (int)psi_x;
         desRect.y = (int)psi_y;
     }
-    int returnehealth()
+    int returnihealth()
     {
-        erunninghealth = ehealth-ecollision*20;
-        return erunninghealth;
+        irunninghealth = ihealth-icollision*50;
+        return irunninghealth;
     }
-} Enemy;
+} Innocent;
 
 #endif

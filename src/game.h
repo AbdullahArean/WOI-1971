@@ -55,9 +55,9 @@ typedef struct Game
     void update()
     {
         while(!SDL_TICKS_PASSED(SDL_GetTicks(),last_frame_time+ FRAME_TARGET_TIME));
-
+        delta_time = (SDL_GetTicks()-last_frame_time)/1000.0f;
         last_frame_time=SDL_GetTicks();
-    (gameplay==0)? mainmenuupdate():gameplayupdate();
+        (gameplay==0)? mainmenuupdate():gameplayupdate();
         
     }
 

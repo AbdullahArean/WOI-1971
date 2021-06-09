@@ -33,7 +33,14 @@ bool game_running = 1;
 int gameplay=0;
 int StoryScript = 0;
 double last_frame_time;
-
+double delta_time;
+ //Indicating Three Rows
+        int row1=0;
+        int row2=63;
+        int row3=117;
+        
+int phealth;
+int pscore;
 
 #include "clean.h"
 #include "sound.h"

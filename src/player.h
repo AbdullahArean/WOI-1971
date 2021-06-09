@@ -31,6 +31,12 @@ typedef struct Player
     double x_vel = 0;
     double y_vel = 0;
 
+    // keep track of which inputs are given
+        int up = 0;
+        int down = 0;
+        int left = 0;
+        int right = 0;
+
     //Draw
     void playerrender(int width, int height, SDL_Texture *pTexture, SDL_Renderer *pRenderer, SDL_RendererFlip flip)
     {
@@ -49,25 +55,22 @@ typedef struct Player
     void playerinput()
     {
 
-        // keep track of which inputs are given
-        int up = 0;
-        int down = 0;
-        int left = 0;
-        int right = 0;
+        
 
-        SDL_Event event;
-        while (SDL_PollEvent(&event))
+        SDL_Event event1;
+        while (SDL_PollEvent(&event1))
         {
-            switch (event.type)
+            switch (event1.type)
             {
             case SDL_QUIT:
                 game_running = 0;
                 break;
             case SDL_KEYDOWN:
-                switch (event.key.keysym.scancode)
+                switch (event1.key.keysym.scancode)
                 {
                 case SDL_SCANCODE_W:
                 case SDL_SCANCODE_UP:
+                    printf("Pressed\n");
                     up = 1;
                     break;
                 case SDL_SCANCODE_A:
@@ -86,29 +89,29 @@ typedef struct Player
                     break;
                 }
                 break;
-            case SDL_KEYUP:
-                switch (event.key.keysym.scancode)
-                {
-                case SDL_SCANCODE_W:
-                case SDL_SCANCODE_UP:
-                    up = 0;
-                    break;
-                case SDL_SCANCODE_A:
-                case SDL_SCANCODE_LEFT:
-                    left = 0;
-                    break;
-                case SDL_SCANCODE_S:
-                case SDL_SCANCODE_DOWN:
-                    down = 0;
-                    break;
-                case SDL_SCANCODE_D:
-                case SDL_SCANCODE_RIGHT:
-                    right = 0;
-                    break;
-                default:
-                    break;
-                }
-                break;
+            // case SDL_KEYUP:
+            //     switch (event1.key.keysym.scancode)
+            //     {
+            //     case SDL_SCANCODE_W:
+            //     case SDL_SCANCODE_UP:
+            //         up = 0;
+            //         break;
+            //     case SDL_SCANCODE_A:
+            //     case SDL_SCANCODE_LEFT:
+            //         left = 0;
+            //         break;
+            //     case SDL_SCANCODE_S:
+            //     case SDL_SCANCODE_DOWN:
+            //         down = 0;
+            //         break;
+            //     case SDL_SCANCODE_D:
+            //     case SDL_SCANCODE_RIGHT:
+            //         right = 0;
+            //         break;
+            //     default:
+            //         break;
+            //     }
+            //     break;
             }
         }
 
@@ -116,28 +119,33 @@ typedef struct Player
         x_vel = y_vel = 0;
         if (up && !down)
             y_vel = -SPEED/60;
-        if (down && !up)
+        else if (down && !up)
             y_vel = SPEED/60;
-        if (left && !right)
+        else if (left && !right)
             x_vel = -SPEED/60;
-        if (right && !left)
+        else if (right && !left)
             x_vel = SPEED/60;
+        else ;
     }
     void playerupdate()
     {
         // update positions
-        psi_x += x_vel ;// 60;
-        psi_y += y_vel ;// 60;
+        psi_x += 30*delta_time; //x_vel ;// 60;
+        psi_y +=  30*delta_time;//y_vel;// 60;
 
+        // //Indicating Three Rows
+        // int row1=0;
+        // int row2=63;
+        // int row3=117;
         // collision detection with bounds
         if (psi_x <= 0)
             psi_x = 0;
         if (psi_y <= 0)
             psi_y = 0;
-        if (psi_x >= WINDOW_WIDTH - desRect.w)
-            psi_x = WINDOW_WIDTH - desRect.w;
-        if (psi_y >= WINDOW_HEIGHT - desRect.h)
-            psi_y = WINDOW_HEIGHT - desRect.h;
+        if (psi_x >= WINDOW_WIDTH/2 - desRect.w)
+            psi_x = WINDOW_WIDTH/2 - desRect.w;
+        if (psi_y >= WINDOW_HEIGHT-desRect.h-row3)
+            psi_y =  WINDOW_HEIGHT-desRect.h-row3;
 
         // set the positions in the struct
         desRect.x = (int)psi_x;

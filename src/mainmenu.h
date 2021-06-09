@@ -3,7 +3,7 @@
 
 #include "constants.h"
 #include"texturemanager.h"
-
+int keypressed=0;
 TextureManager TM;
 void mainmenuinit()
 {
@@ -37,13 +37,24 @@ void mainmenuinit()
 }
 void mainmenurender()
 {
-
     TM.drawsame(0, 0, bg, renderer);
-    TM.drawsame(405, 95, con, renderer);
-    TM.drawsame(405, 217, newg, renderer);
-    TM.drawsame(405, 339, his, renderer);
-    TM.drawsame(405, 461, settings, renderer);
-    TM.drawsame(405, 583, story, renderer);
+    
+    if(keypressed==11) TM.drawsame(405, 95, con, renderer);
+    else TM.drawsame(405, 95, conp, renderer);
+    if(keypressed==12) TM.drawsame(405, 217, newg, renderer);
+    else TM.drawsame(405, 217, newgp, renderer);
+    if(keypressed==13) TM.drawsame(405, 339, his, renderer);
+    else TM.drawsame(405, 339, hisp, renderer);
+    if(keypressed==14) TM.drawsame(405, 461, settings, renderer);
+    else TM.drawsame(405, 461, settingsp, renderer);
+    if(keypressed==15) TM.drawsame(405, 583, story, renderer);
+    else TM.drawsame(405, 583, storyp, renderer);
+    
+     if(keypressed==11 || keypressed==12) gameplay=1;
+
+   
+
+    keypressed=0;
 }
 
 void mainmenuupdate()
@@ -57,33 +68,38 @@ void mainmenuupdate()
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 95 && mousey <= 95 + 91)
         {
             Mix_HaltMusic();
-            TM.drawsame(405, 95, conp, renderer);
+            keypressed=11;
+            //TM.drawsame(405, 95, conp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
-            gameplay = 1; //change
+           
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 217 && mousey <= 217 + 91)
         {
             Mix_HaltMusic();
-            TM.drawsame(405, 217, newgp, renderer);
+            keypressed=12;
+            // TM.drawsame(405, 217, newgp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
-            gameplay= 1; //change
+            //gameplay= 1; //change
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 339 && mousey <= 339 + 91)
         {
             Mix_HaltMusic();
-            TM.drawsame(405, 339, hisp, renderer);
+            keypressed=13;
+            //TM.drawsame(405, 339, hisp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 461 && mousey <= 461 + 91)
         {
             Mix_HaltMusic();
-            TM.drawsame(405, 461, settingsp, renderer);
+            keypressed=14;
+            //TM.drawsame(405, 461, settingsp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 583 && mousey <= 583 + 91)
         {
             Mix_HaltMusic();
-            TM.drawsame(405, 583, storyp, renderer);
+            keypressed=15;
+            //TM.drawsame(405, 583, storyp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
             StoryScript = 1;
         }

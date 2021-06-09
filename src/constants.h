@@ -24,6 +24,7 @@
 //frame rate per Second
 #define FPS 60
 #define FRAME_TARGET_TIME (1000 / FPS)
+
  
  
 //ALL The Global Varaiables Declared Here
@@ -31,7 +32,7 @@
 bool game_running = 1;
 int gameplay=0;
 int StoryScript = 0;
-  
+double last_frame_time;
 
 
 #include "clean.h"

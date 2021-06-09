@@ -26,10 +26,13 @@ typedef struct Player
     //Global Variables
     SDL_Rect srcRect;
     SDL_Rect desRect;
-    double psi_x=0;
-    double psi_y=0;
+    double psi_x = 0;
+    double psi_y = 520;
+    double x_vel = 0;
+    double y_vel = 0;
+
     //Draw
-    void draw(int x, int y, int width, int height, SDL_Texture *pTexture, SDL_Renderer *pRenderer, SDL_RendererFlip flip)
+    void playerrender(int width, int height, SDL_Texture *pTexture, SDL_Renderer *pRenderer, SDL_RendererFlip flip)
     {
         // Simple dimension calculation
         srcRect.x = 0;
@@ -37,17 +40,14 @@ typedef struct Player
         SDL_QueryTexture(pTexture, NULL, NULL, &srcRect.w, &srcRect.h);
         desRect.w = width;
         desRect.h = height;
-        desRect.x = x;
-        desRect.y = y;
+        desRect.x =psi_x;
+        desRect.y =psi_y;
         SDL_RenderCopyEx(pRenderer, pTexture, &srcRect, &desRect, 0, 0, flip);
-        //SDL_RenderPresent(pRenderer);
+        
     }
     //SDL_RenderPresent(pRenderer);
-    void PlayerUpdate()
+    void playerinput()
     {
-        
-        double x_vel = 0;
-        double y_vel = 0;
 
         // keep track of which inputs are given
         int up = 0;
@@ -115,17 +115,19 @@ typedef struct Player
         // determine velocity
         x_vel = y_vel = 0;
         if (up && !down)
-            y_vel = -SPEED;
+            y_vel = -SPEED/60;
         if (down && !up)
-            y_vel = SPEED;
+            y_vel = SPEED/60;
         if (left && !right)
-            x_vel = -SPEED;
+            x_vel = -SPEED/60;
         if (right && !left)
-            x_vel = SPEED;
-
+            x_vel = SPEED/60;
+    }
+    void playerupdate()
+    {
         // update positions
-        psi_x += x_vel / 60;
-        psi_y += y_vel / 60;
+        psi_x += x_vel ;// 60;
+        psi_y += y_vel ;// 60;
 
         // collision detection with bounds
         if (psi_x <= 0)
@@ -138,8 +140,8 @@ typedef struct Player
             psi_y = WINDOW_HEIGHT - desRect.h;
 
         // set the positions in the struct
-        desRect.y = (int)psi_x;
-        desRect.x = (int)psi_y;
+        desRect.x = (int)psi_x;
+        desRect.y = (int)psi_y;
     }
 } Player;
 

@@ -35,17 +35,21 @@ void gameplayrender()
 {
 
     TM2.drawsame(0, 0, gbg, renderer);
-    p1.draw(0,0,160,180,p1t,renderer, SDL_FLIP_NONE);
-    e1.draw(100,200,160,180,e1t,renderer, SDL_FLIP_NONE);
-    e2.draw(500,200,160,180,e2t,renderer, SDL_FLIP_NONE);
+    p1.playerrender(160,180,p1t,renderer, SDL_FLIP_NONE);
+    // e1.draw(100,200,160,180,e1t,renderer, SDL_FLIP_NONE);
+    // e2.draw(500,200,160,180,e2t,renderer, SDL_FLIP_NONE);
     
 
 
 }
+void gameplayinputhandle()
+{
+    p1.playerinput();
 
+}
 void gameplayupdate()
 {
-    p1.PlayerUpdate();
+    p1.playerupdate();
 
 }
 

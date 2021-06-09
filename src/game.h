@@ -50,9 +50,13 @@ typedef struct Game
                 game_running = FALSE;
             break;
         }
+        if(gameplay) gameplayinputhandle();
     }
     void update()
     {
+        while(!SDL_TICKS_PASSED(SDL_GetTicks(),last_frame_time+ FRAME_TARGET_TIME));
+
+        last_frame_time=SDL_GetTicks();
     (gameplay==0)? mainmenuupdate():gameplayupdate();
         
     }

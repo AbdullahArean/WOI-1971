@@ -20,9 +20,12 @@ void mainmenuinit()
     storyp = TM.ReturnTexture("assets/storyp.png", renderer);
 
     
-    //Playing the music for 1st page
-    Mix_Music *bMusic1 = Mix_LoadMUS("assets/firstpage.mp3");
-    Mix_PlayMusic(bMusic1, -1);
+    //Playing the music for 1st page according to the state of Sound System
+   
+        Mix_Music *bMusic1 = Mix_LoadMUS("assets/firstpage.mp3");
+        Mix_PlayMusic(bMusic1, -1);
+    
+
     //First Page Load
     fpage = TM.ReturnTexture("assets/woinewhomepage.png", renderer);
     TM.draw(0, 0, 1080, 720, fpage, renderer, SDL_FLIP_NONE);
@@ -31,9 +34,13 @@ void mainmenuinit()
     SDL_Delay(9000);
     Mix_HaltMusic();//Stopping the 1st page music
 
-    //Playing the 2nd page music
-    Mix_Music *bMusic2 = Mix_LoadMUS("assets/secondpage.mp3");
-    Mix_PlayMusic(bMusic2, -1);
+    //Playing the music for 1st page according to the state of Sound System
+    if(sound_state)
+    {
+        Mix_Music *bMusic2 = Mix_LoadMUS("assets/secondpage.mp3");
+        Mix_PlayMusic(bMusic2, -1);
+    }
+    
 }
 void mainmenurender()
 {

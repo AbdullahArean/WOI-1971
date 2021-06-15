@@ -34,11 +34,16 @@ int gameplay=0;
 int StoryScript = 0;
 double last_frame_time;
 double delta_time;
- //Indicating Three Rows
-        int row1=0;
-        int row2=63;
-        int row3=117;
-        
+
+//Indicating Three Rows
+int row1=0;
+int row2=63;
+int row3=117;
+
+//Variables for keeping the sound state
+bool sound_state = 0;
+
+//Variables for keeping the health state        
 int phealth;
 int pscore;
 

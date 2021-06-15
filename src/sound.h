@@ -24,7 +24,7 @@ death = Mix_LoadWAV(“Please enter the path of a wav or mp3”);
 */
  
 //Freeing memory
-void close()
+void soundclose()
 {
    //Free the sound effects
    Mix_FreeChunk(horn);

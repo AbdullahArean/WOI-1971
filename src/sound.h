@@ -7,13 +7,15 @@
 //Initializing
 Mix_Music *bMusic3 = NULL;
 Mix_Chunk *click = NULL, *bullet = NULL, *plane = NULL, *victory = NULL, *levelup = NULL, *death = NULL;
- 
+
 //Loading the musics
 Mix_Music *bMusic1 = Mix_LoadMUS("assets/firstpage.mp3");
 Mix_Music *bMusic2 = Mix_LoadMUS("assets/secondpage.mp3");
-/*
-bMusic3 = Mix_LoadMUS(“Please enter the path of an mp3”);
+
+//bMusic3 = Mix_LoadMUS(“Please enter the path of an mp3”);
 //Loading the sound effects
+Mix_Chunk *horn = Mix_LoadWAV("assets/HornAmbience.wav");
+/*
 bullet = Mix_LoadWAV(“Please enter the path of a wav or mp3”);
 plane = Mix_LoadWAV(“Please enter the path of a wav or mp3”);
 victory = Mix_LoadWAV(“Please enter the path of a wav or mp3”);
@@ -25,6 +27,7 @@ death = Mix_LoadWAV(“Please enter the path of a wav or mp3”);
 void close()
 {
    //Free the sound effects
+   Mix_FreeChunk(horn);
    Mix_FreeChunk(bullet);
    Mix_FreeChunk(plane);
    Mix_FreeChunk(victory);
@@ -32,6 +35,7 @@ void close()
    Mix_FreeChunk(death);
  
    //Setting the Chunks to NULL
+   horn = NULL;
    bullet = NULL;
    plane = NULL;
    victory = NULL;

@@ -78,6 +78,11 @@ void mainmenuupdate()
             keypressed=11;
             //TM.drawsame(405, 95, conp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            if(sound_state)
+            {
+                Mix_Chunk *horn = Mix_LoadWAV("assets/HornAmbience.wav");
+                Mix_PlayChannel(-1, horn ,0);//Playing Sound Effect
+            }
            
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 217 && mousey <= 217 + 91)

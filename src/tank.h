@@ -49,8 +49,8 @@ typedef struct TANK{
             x_vel= (-1)*x_vel;}
         if (psi_y > WINDOW_HEIGHT-desRect.h)
             psi_y = WINDOW_HEIGHT-desRect.h;
-        if (psi_x < WINDOW_WIDTH/2 - desRect.w)
-            {psi_x = WINDOW_WIDTH/2 - desRect.w;
+        if (psi_x < WINDOW_WIDTH/2)
+            {psi_x = WINDOW_WIDTH/2;
             x_vel= (-1)*x_vel;}
         if (psi_y < WINDOW_HEIGHT-desRect.h-row)
             psi_y =  WINDOW_HEIGHT-desRect.h-row;

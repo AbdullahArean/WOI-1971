@@ -66,8 +66,13 @@ typedef struct Player
                 game_running = 0;
                 break;
             case SDL_KEYDOWN:
+
                 switch (event1.key.keysym.scancode)
                 {
+                case SDLK_ESCAPE:
+                    game_running = FALSE;
+                    break;
+
                 case SDL_SCANCODE_W:
                 case SDL_SCANCODE_UP:
                     printf("Pressed\n");

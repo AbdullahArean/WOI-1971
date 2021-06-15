@@ -41,7 +41,7 @@ int row2=63;
 int row3=117;
 
 //Variables for keeping the sound state
-bool sound_state = 0;
+bool sound_state = 1;
 
 //Variables for keeping the health state        
 int phealth;

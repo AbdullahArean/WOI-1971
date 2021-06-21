@@ -37,12 +37,19 @@ int row1 = 0;
 int row2 = 63;
 int row3 = 117;
 
+// keep track of which inputs are given
+        int up = 0;
+        int down = 0;
+        int left = 0;
+        int right = 0;
+
+
 //Variables for keeping the sound state
 bool sound_state = 1;
 
 //Variables for keeping the health state
-int phealth;
-int pscore;
+int phealth=100;
+int pscore=0;
 
 #include "clean.h"
 #include "sound.h"

@@ -43,20 +43,45 @@ void gameplayrender()
 void gameplayinputhandle()
 {
     SDL_Event event;
-        SDL_PollEvent(&event);
+    SDL_PollEvent(&event);
 
-        switch (event.type)
+    switch (event.type)
+    {
+    case SDL_QUIT:
+        game_running = FALSE;
+        break;
+
+    case SDL_KEYDOWN:
+
+        switch (event.key.keysym.scancode)
         {
-        case SDL_QUIT:
+        case SDLK_ESCAPE:
             game_running = FALSE;
             break;
 
-        case SDL_KEYDOWN:
-            if (event.key.keysym.sym == SDLK_ESCAPE)
-                game_running = FALSE;
+        case SDL_SCANCODE_W:
+        case SDL_SCANCODE_UP:
+            printf("Pressed\n");
+            up = 1;
+            break;
+        case SDL_SCANCODE_A:
+        case SDL_SCANCODE_LEFT:
+            left = 1;
+            break;
+        case SDL_SCANCODE_S:
+        case SDL_SCANCODE_DOWN:
+            down = 1;
+            break;
+        case SDL_SCANCODE_D:
+        case SDL_SCANCODE_RIGHT:
+            right = 1;
+            break;
+        default:
             break;
         }
-    p1.playerinput();
+        break;
+    }
+    
 }
 void gameplayupdate()
 {
@@ -68,7 +93,7 @@ void gameplayupdate()
         if (mousex >= 1005 && mousex <= 1060 && mousey >= 21 && mousey <= 86)
         {
             TM2.drawsame(1005, 21, ppt, renderer);
-            pause=1;
+            pause = 1;
         }
     }
     p1.playerupdate();

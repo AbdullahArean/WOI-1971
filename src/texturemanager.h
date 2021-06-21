@@ -78,6 +78,7 @@ typedef struct TextureManager
 
         SDL_RenderCopyEx(pRenderer, pTexture, &srcRect, &destRect, 0, 0, flip);
     }
+    
 
 } TextureManager;
 #endif

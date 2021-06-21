@@ -3,7 +3,7 @@
 
 #include "constants.h"
 #include"texturemanager.h"
-int keypressed=0;
+
 TextureManager TM;
 void mainmenuinit()
 {
@@ -52,7 +52,7 @@ void mainmenurender()
     else TM.drawsame(405, 217, newgp, renderer);
     if(keypressed==13) TM.drawsame(405, 339, his, renderer);
     else TM.drawsame(405, 339, hisp, renderer);
-    if(keypressed==14) TM.drawsame(405, 461, settings, renderer);
+    if(keypressed==20) TM.drawsame(405, 461, settings, renderer);
     else TM.drawsame(405, 461, settingsp, renderer);
     if(keypressed==15) TM.drawsame(405, 583, story, renderer);
     else TM.drawsame(405, 583, storyp, renderer);
@@ -95,21 +95,21 @@ void mainmenuupdate()
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 339 && mousey <= 339 + 91)
         {
-            Mix_HaltMusic();
+            //Mix_HaltMusic();
             keypressed=13;
             //TM.drawsame(405, 339, hisp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 461 && mousey <= 461 + 91)
         {
-            Mix_HaltMusic();
-            keypressed=14;
+            //Mix_HaltMusic();
+            keypressed=20;
             //TM.drawsame(405, 461, settingsp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 583 && mousey <= 583 + 91)
         {
-            Mix_HaltMusic();
+            //Mix_HaltMusic();
             keypressed=15;
             //TM.drawsame(405, 583, storyp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect

@@ -5,6 +5,8 @@
 #include "gameplay.h"
 #include "mainmenu.h"
 #include "initialization.h"
+#include "settings.h"
+#include "pause.h"
 
 
 typedef struct Game
@@ -22,6 +24,9 @@ typedef struct Game
     Mix_PlayMusic(bMusic1, -1);
      mainmenuinit();
     gameplayinit();
+    settingsinit();
+    painit();
+
        
    
     }
@@ -30,7 +35,10 @@ typedef struct Game
         SDL_RenderPresent(renderer);
         // clear the window to black
         SDL_RenderClear(renderer);
-        (gameplay==0)?mainmenurender():gameplayrender();
+        if(gameplay==0 && keypressed<19) mainmenurender();
+        if(gameplay==0 && keypressed>=19) settingsrender();
+        if(gameplay==1) {(pause==1)?parender():gameplayrender();}
+
         SDL_RenderPresent(renderer);
         //SDL_Delay(5000);
     }
@@ -57,7 +65,9 @@ typedef struct Game
         while(!SDL_TICKS_PASSED(SDL_GetTicks(),last_frame_time+ FRAME_TARGET_TIME));
         delta_time = (SDL_GetTicks()-last_frame_time)/1000.0f;
         last_frame_time=SDL_GetTicks();
-        (gameplay==0)? mainmenuupdate():gameplayupdate();
+        if(gameplay==0 && keypressed<19) mainmenuupdate();
+        if(gameplay==0 && keypressed>=19) settingsupdate();
+        if(gameplay==1) {(pause==1)?paupdate():gameplayupdate();}
         
     }
 
@@ -84,9 +94,15 @@ typedef struct Game
             SDL_DestroyTexture(story);
             SDL_DestroyTexture(storyp);
             SDL_DestroyTexture(fpage);
+            SDL_DestroyTexture(gbg);
+            SDL_DestroyTexture(p1t);
+            SDL_DestroyTexture(e1t);
+            SDL_DestroyTexture(e2t);
+            SDL_DestroyTexture(i1t);
+            SDL_DestroyTexture(t1t);
         }
         return game_running;
     }
 
 } Game;
-#endif /* defined(__Game__) */
+#endif

@@ -5,10 +5,10 @@
 #include"constants.h"
 #include "sound.h"
 
-//Destroying the window and the renderer
-void Clean(SDL_Window* win, SDL_Renderer* render);
 
-//Code Implementation
+
+
+//Destroying the window and the renderer
 void Clean(SDL_Window* win, SDL_Renderer* render)
 {
     soundclose();

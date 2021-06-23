@@ -40,6 +40,9 @@ bool game_running = 1;
 //variable to state if game is played or not
 int gameplay = 0;
 
+//game over variable
+int gameover =0;
+
 //A variable for Story Showing
 int StoryScript = 0;
 
@@ -65,6 +68,11 @@ int bn=0;
 
 //player shot or not
 int shot=0;
+
+//EnemyNumber
+int EnemyNumber=2;
+int TankNumber= 2;
+int InnocentNumber=2;
 
 //Variables for keeping the health and score state
 int phealth = 100;

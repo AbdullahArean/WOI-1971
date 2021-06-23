@@ -9,10 +9,8 @@ typedef struct TANK{
     SDL_Rect desRect;
     
     //Scoring Variable
-    int thealth=500;
-    int trunninghealth;
-    int tcollision;
-
+    int health=500;
+    bool dead=0;
 
     double psi_x = WINDOW_WIDTH-160;
     double psi_y = WINDOW_HEIGHT-180-row3;
@@ -24,6 +22,7 @@ typedef struct TANK{
     //Draw
     void TankRender(int x, int y, int width, int height, SDL_Texture *pTexture, SDL_Renderer *pRenderer, SDL_RendererFlip flip)
     {
+        if(!dead){
         // Simple dimension calculation
         srcRect.x = 0;
         srcRect.y = 0;
@@ -34,11 +33,12 @@ typedef struct TANK{
         desRect.y = psi_y;
         SDL_RenderCopyEx(pRenderer, pTexture, &srcRect, &desRect, 0, 0, flip);
         //SDL_RenderPresent(pRenderer);
+        }
     }
     void tankupdate(double row, double v_vel)
     {
         // update positions
-        
+        if(!dead){
         if(ft==0) {x_vel=v_vel; ft=1;}
         psi_x -= x_vel*delta_time; //x_vel ;// 60;
         psi_y -=  y_vel*delta_time;//y_vel;// 60;
@@ -59,11 +59,33 @@ typedef struct TANK{
         // set the positions in the struct
         desRect.x = (int)psi_x;
         desRect.y = (int)psi_y;
+        }
     }
-    int returnehealth()
+   void updatehealth(int command)
     {
-        trunninghealth = thealth-tcollision*20;
-        return trunninghealth;
+        if (!dead)
+        {
+        if (command == -1)
+            health -= 20;
+        if (health <= 0)
+            dead = 1;
+        }
+    }
+    int ReturnPositionx()
+    {
+        if (!dead)
+        {
+        return psi_x;
+        }
+        else return -1;
+    }
+    int ReturnPositiony()
+    {
+        if (!dead)
+        {
+        return psi_y;
+        }
+        else return -1;
     }
 } Tank;
 

@@ -137,6 +137,7 @@ typedef struct Game
                 SDL_DestroyTexture(i1t);
                 SDL_DestroyTexture(t1t);
             }
+            //if(phealth<=0) game_running=0;
             return game_running;
         }
     }

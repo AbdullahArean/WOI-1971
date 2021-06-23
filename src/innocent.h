@@ -7,21 +7,22 @@ typedef struct Innocent{
 //Global Variables
     SDL_Rect srcRect;
     SDL_Rect desRect;
+    //Scoring Variable
+    int health = 50;
+    bool dead = 0;
+
     double psi_x = WINDOW_WIDTH-160;
     double psi_y = WINDOW_HEIGHT-180-row3;
     double x_vel = 100;
     double y_vel = 30;
     bool ft=0;
 
-    //Scoring Variable
-    int ihealth=100;
-    int irunninghealth;
-    int icollision;
 
 
     //Draw
     void InnocentRender(int x, int y, int width, int height, SDL_Texture *pTexture, SDL_Renderer *pRenderer, SDL_RendererFlip flip)
     {
+        if(!dead){
         // Simple dimension calculation
         srcRect.x = 0;
         srcRect.y = 0;
@@ -32,9 +33,11 @@ typedef struct Innocent{
         desRect.y = psi_y;
         SDL_RenderCopyEx(pRenderer, pTexture, &srcRect, &desRect, 0, 0, flip);
         //SDL_RenderPresent(pRenderer);
+        }
     }
     void Innocentupdate(double row, double v_vel)
     {
+        if(!dead){
         if(ft==0) {x_vel=v_vel; ft=1;}
         // update positions
         psi_x -= x_vel*delta_time; //x_vel ;// 60;
@@ -52,11 +55,33 @@ typedef struct Innocent{
         // set the positions in the struct
         desRect.x = (int)psi_x;
         desRect.y = (int)psi_y;
+        }
     }
-    int returnihealth()
+    void updatehealth(int command)
     {
-        irunninghealth = ihealth-icollision*50;
-        return irunninghealth;
+        if (!dead)
+        {
+        if (command == -1)
+            health -= 25;
+        if (health <= 0)
+            dead = 1;
+        }
+    }
+    int ReturnPositionx()
+    {
+        if (!dead)
+        {
+        return psi_x;
+        }
+        else return -1;
+    }
+    int ReturnPositiony()
+    {
+        if (!dead)
+        {
+        return psi_y;
+        }
+        else return -1;
     }
 } Innocent;
 

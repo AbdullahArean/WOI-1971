@@ -9,15 +9,16 @@
 #include "tank.h"
 #include "innocent.h"
 #include "bullet.h"
+#include "lastpage.h"
 
 TextureManager TM2;
 Player p1;
-Enemy e1;
-Enemy e2;
-Enemy e3;
-Innocent i1;
-Innocent i2;
-Tank t1;
+Enemy e1[10];
+// Enemy e2;
+// Enemy e3;
+Innocent i1[10];
+//Innocent i2;
+Tank t1[10];
 Bullet b1[10000];
 Bullet test;
 
@@ -35,71 +36,45 @@ void gameplayinit()
 }
 void gameplayrender()
 {
+    if(gameover==1)
+    {
+        lastpagerender();
+
+    }
+    else{
 
     TM2.drawsame(0, 0, gbg, renderer);
     p1.playerrender(160, 180, p1t, renderer, SDL_FLIP_NONE);
-    t1.TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300, 180, t1t, renderer, SDL_FLIP_NONE);
-    
-    e1.EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row3, 160, 180, e1t, renderer, SDL_FLIP_NONE);
-    e2.EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row2, 160, 180, e2t, renderer, SDL_FLIP_NONE);
+    if(pscore>=100) t1[0].TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300, 180, t1t, renderer, SDL_FLIP_NONE);
+    if(pscore>=300) t1[1].TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300, 180, t1t, renderer, SDL_FLIP_NONE);
+    e1[0].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row3, 160, 180, e1t, renderer, SDL_FLIP_NONE);
+    e1[1].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row2, 160, 180, e2t, renderer, SDL_FLIP_NONE);
     //e3.EnemyRender(WINDOW_WIDTH-160,WINDOW_HEIGHT-180-row1,160,180,e2t,renderer, SDL_FLIP_NONE);
-    i1.InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 160, 180, i1t, renderer, SDL_FLIP_NONE);
-    i2.InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 160, 180, i1t, renderer, SDL_FLIP_NONE);
+    i1[0].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 160, 180, i1t, renderer, SDL_FLIP_NONE);
+    i1[1].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 160, 180, i1t, renderer, SDL_FLIP_NONE);
     //bullet
     if(shot==1) bn++;
     shot=0;
     for(int i=0; i<bn; i++)
     {
-        b1[i].Bulletfire(p1.ReturnPlayerPositionx()+160,p1.ReturnPlayerPositiony()+34, bu1, renderer, SDL_FLIP_NONE);
+        b1[i].Bulletfire(p1.ReturnPlayerPositionx()+160,p1.ReturnPlayerPositiony()+34, bu, renderer, SDL_FLIP_NONE);
     }
-    
+    }
     
 }
 void gameplayinputhandle()
 {
-    // SDL_Event e;
-    // while (SDL_PollEvent(&e) != 0)
-    // {
-    //     //User requests quit
-    //     if (e.type == SDL_QUIT)
-    //     {
-    //         game_running = 0;
-    //     }
-    //     //User presses a key
-    //     else if (e.type == SDL_KEYDOWN)
-    //     {
-    //         //Select surfaces based on key press
-    //         switch (e.key.keysym.sym)
-    //         {
-    //         case SDLK_UP:
-    //             //printf("Up\n");
-    //             up = 1;
-    //             break;
 
-    //         case SDLK_DOWN:
-    //             //printf("Down\n");
-    //             down = 1;
-    //             break;
-
-    //         case SDLK_LEFT:
-    //             //printf("left\n");
-    //             left = 1;
-    //             break;
-
-    //         case SDLK_RIGHT:
-    //             //printf("right\n");
-    //             right = 1;
-    //             break;
-
-    //         default:
-    //             //printf("Default\n");
-    //             break;
-    //         }
-    //     }
-    // }
 }
 void gameplayupdate()
 {
+    if(phealth<=0 || pscore>=1100) gameover=1;
+    if(gameover==1)
+    {
+        lupdate();
+
+    }
+    else{
     
     int mousex, mousey;
     int buttons = SDL_GetMouseState(&mousex, &mousey);
@@ -115,17 +90,19 @@ void gameplayupdate()
     //b1.Bulletupdate(row1, 40);
     p1.playerupdate();
     
-    e1.enemyupdate(row1, 40);
-    e2.enemyupdate(row2, 50);
+    e1[0].enemyupdate(row1, 40);
+    e1[1].enemyupdate(row2, 50);
     //e3.enemyupdate(row3,60);
-    i1.Innocentupdate(row1, 70);
-    i2.Innocentupdate(row2, 80);
-    t1.tankupdate(row3, 30);
+    i1[0].Innocentupdate(row1, 70);
+    i1[1].Innocentupdate(row2, 80);
+    if(pscore>=100) t1[0].tankupdate(row3, 30);
+
+    if(pscore>=300) t1[1].tankupdate(row3, 30);
     for(int i=0; i<bn; i++)
     {
-        b1[i].update(-1);
+        b1[i].update(+1);
     }
-    
+    }
     
 }
 

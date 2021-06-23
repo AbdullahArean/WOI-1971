@@ -7,6 +7,7 @@
 #include "initialization.h"
 #include "settings.h"
 #include "pause.h"
+#include "lastpage.h"
 
 typedef struct Game
 {
@@ -25,6 +26,7 @@ typedef struct Game
         gameplayinit();
         settingsinit();
         painit();
+        lastpageinit();
     }
     void render()
     {
@@ -77,6 +79,9 @@ typedef struct Game
                 case SDLK_RIGHT:
                     //printf("right\n");
                     right=1;
+                    break;
+                 case SDLK_SPACE:
+                    shot=1;
                     break;
 
                 default:

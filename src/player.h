@@ -82,6 +82,15 @@ typedef struct Player
         desRect.x = (int)psi_x;
         desRect.y = (int)psi_y;
     }
+
+    int ReturnPlayerPositionx()
+    {
+        return psi_x ;
+    }
+    int ReturnPlayerPositiony()
+    {
+        return psi_y ;
+    }
 } Player;
 
 #endif

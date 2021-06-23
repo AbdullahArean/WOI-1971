@@ -8,7 +8,7 @@
 #include "enemy.h"
 #include "tank.h"
 #include "innocent.h"
-#include "bullet.h"
+#include "pbullet.h"
 
 TextureManager TM2;
 Player p1;

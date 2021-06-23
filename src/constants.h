@@ -114,5 +114,6 @@ SDL_Texture *e2t = NULL;
 SDL_Texture *i1t = NULL;
 SDL_Texture *t1t = NULL;
 SDL_Texture *bu = NULL;
+SDL_Texture *bu1 = NULL;
 
 #endif

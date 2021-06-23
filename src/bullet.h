@@ -19,23 +19,23 @@ typedef struct Bullet
 
 
     //Draw
-    void Bulletfire(int width, int height, SDL_Texture *pTexture, SDL_Renderer *pRenderer, SDL_RendererFlip flip)
+    void Bulletfire(int x, int y, SDL_Texture *pTexture, SDL_Renderer *pRenderer, SDL_RendererFlip flip)
     {
         // Simple dimension calculation
         srcRect.x = 0;
         srcRect.y = 0;
         SDL_QueryTexture(pTexture, NULL, NULL, &srcRect.w, &srcRect.h);
-        desRect.w = width;
-        desRect.h = height;
-        if(firsttime==0) {psi_x = p1.ReturnPlayerPositionx()+160;psi_y =p1.ReturnPlayerPositiony()+34;firsttime=1;}
+        desRect.w = 24;
+        desRect.h = 8;
+        if(firsttime==0) {psi_x = x;psi_y =y;firsttime=1;}
         desRect.x = psi_x;
         desRect.y = psi_y;
         SDL_RenderCopyEx(pRenderer, pTexture, &srcRect, &desRect, 0, 0, flip);
         //SDL_RenderPresent(pRenderer);
     }
-    void update()
+    void update(int dir)
     {    
-        psi_x += bvelocity*delta_time;
+        psi_x += (dir)*bvelocity*delta_time;
         desRect.x = (int)psi_x;
         desRect.y = (int)psi_y;
     }

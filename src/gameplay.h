@@ -8,7 +8,7 @@
 #include "enemy.h"
 #include "tank.h"
 #include "innocent.h"
-#include "pbullet.h"
+#include "bullet.h"
 
 TextureManager TM2;
 Player p1;
@@ -31,6 +31,7 @@ void gameplayinit()
     t1t = TM2.ReturnTexture("assets/tank1.png", renderer);
     ppt = TM2.ReturnTexture("assets/pp.png", renderer);
     bu  = TM2.ReturnTexture("assets/bu.png", renderer);
+    bu1= TM2.ReturnTexture("assets/bu1.png", renderer);
 }
 void gameplayrender()
 {
@@ -47,17 +48,9 @@ void gameplayrender()
     //bullet
     if(shot==1) bn++;
     shot=0;
-    // {bn++;
-    // b1[bn].Bulletfire(30, 10, bu, renderer, SDL_FLIP_NONE);}
-    // shot=0;
-    // for(int i=1; i<bn; i++)
-    // {
-    //     b1[bn].update( bu, renderer, SDL_FLIP_NONE);
-        
-    // }
     for(int i=0; i<bn; i++)
     {
-        b1[i].Bulletfire(24, 8, bu, renderer, SDL_FLIP_NONE);
+        b1[i].Bulletfire(p1.ReturnPlayerPositionx()+160,p1.ReturnPlayerPositiony()+34, bu1, renderer, SDL_FLIP_NONE);
     }
     
     
@@ -130,7 +123,7 @@ void gameplayupdate()
     t1.tankupdate(row3, 30);
     for(int i=0; i<bn; i++)
     {
-        b1[i].update();
+        b1[i].update(-1);
     }
     
     

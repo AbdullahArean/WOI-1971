@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #install sdl2
 sudo apt install libsdl2-dev libsdl2-2.0-0 -y;
 echo “\nSDL installed Successfully\n”
@@ -20,5 +21,5 @@ make;
 echo “WOI-1971 installed Successfully”
 
 #Running the game
-make run;
+make play;
 

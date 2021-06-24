@@ -1,5 +1,5 @@
-#ifndef PBULLET_H
-#define PBULLET_H
+#ifndef BULLET_H
+#define BULLET_H
 
 #include "constants.h"
 //#include "player.h"

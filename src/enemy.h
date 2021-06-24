@@ -3,35 +3,44 @@
 
 #include "constants.h"
 
-typedef struct Enemy
+typedef struct Enemy //enemy structure
 {
-    //Global Variables
+    //Rectangle to keep track
     SDL_Rect srcRect;
     SDL_Rect desRect;
+
     //Scoring Variable
-    int health = 100;
-    bool dead = 0;
+    int health = 100; //denoting enemy health
+    bool dead = 0;    //denoting enemy is dead or not
 
+    double psi_x = WINDOW_WIDTH - 160;         //position of x axis
+    double psi_y = WINDOW_HEIGHT - 180 - row3; //position of x axis
 
-    double psi_x = WINDOW_WIDTH - 160;
-    double psi_y = WINDOW_HEIGHT - 180 - row3;
-    double x_vel = 30;
-    double y_vel = 30;
-    bool ft = 0;
+    double x_vel = 0.0; //velocity of x axis
+    double y_vel = 0.0; //velocity of y axis
 
-    //Draw
+    bool ft = 0; //used in update function to check if this is the first update or not
+
+    //render or draw 
     void EnemyRender(int x, int y, int width, int height, SDL_Texture *pTexture, SDL_Renderer *pRenderer, SDL_RendererFlip flip)
     {
-        // Simple dimension calculation
-        if (!dead){
-        srcRect.x = 0;
-        srcRect.y = 0;
-        SDL_QueryTexture(pTexture, NULL, NULL, &srcRect.w, &srcRect.h);
-        desRect.w = width;
-        desRect.h = height;
-        desRect.x = psi_x;
-        desRect.y = psi_y;
-        
+        if (!dead) //checking if dead or not
+        {
+            //source rectangle denoting the texture or image source
+            srcRect.x = 0; //source x position
+            srcRect.y = 0;// source y position
+
+            //getting source height and width
+            SDL_QueryTexture(pTexture, NULL, NULL, &srcRect.w, &srcRect.h);
+
+            //destination rectangle 
+            desRect.x = psi_x;
+            desRect.y = psi_y;
+
+            desRect.w = width;
+            desRect.h = height;
+
+
             SDL_RenderCopyEx(pRenderer, pTexture, &srcRect, &desRect, 0, 0, flip);
         }
         //SDL_RenderPresent(pRenderer);
@@ -74,27 +83,29 @@ typedef struct Enemy
     {
         if (!dead)
         {
-        if (command == -1)
-            health -= 20;
-        if (health <= 0)
-            dead = 1;
+            if (command == -1)
+                health -= 20;
+            if (health <= 0)
+                dead = 1;
         }
     }
     int ReturnPositionx()
     {
         if (!dead)
         {
-        return psi_x;
+            return psi_x;
         }
-        else return -1;
+        else
+            return -1;
     }
     int ReturnPositiony()
     {
         if (!dead)
         {
-        return psi_y;
+            return psi_y;
         }
-        else return -1;
+        else
+            return -1;
     }
 } Enemy;
 

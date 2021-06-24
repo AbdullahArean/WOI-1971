@@ -4,6 +4,7 @@
 The story behind the game is about the War of Independence of Bangladesh in 1971. The Hindu-Muslim communal tensions fanned by the British colonial rulers to perpetuate their hold on India had led to the partition of India in 1947. Pakistan was created as a separate homeland for Muslims. The Province of East Pakistan was physically separated from West Pakistan by a thousand miles. Pakistan, therefore, was an unrealistic state from the very beginning. The Pakistani ruling elite controlled by the military elite subjugated the Bengalis politically, culturally and economically and therefore the disillusionment with the new nation was not surprising. In the first-ever national Parliamentary elections held in 1970 based on a one-man-one-vote basis, the Bengali nationalist forces led by Bangabandhu Sheikh Mujibur Rahman won a landslide victory and his party, the Awami League became the majority party in the whole of Pakistan. However, in an attempt to crush this nationalistic movement, the Pakistani Military Junta unleashed a systematic genocide against the Bengali people on the fateful night of March 25, 1971. The Junta received support only from a handful of religion-based local parties and religious fundamentalists.
 Then the war began.
 The Hero of this game is a freedom fighter named “Aresan” whose objective is to free Bangladesh from the Pakistani Military Junta. Gamers will try to kill all of them while not hurting any innocent Bengali. The enemies will also fire and if the bullet touches the hero, the health will decrease. If a Gamer kills a certain number of Military (earns a certain number of points), he will conquer that place and the next battle place will be unlocked. In this game, the battle place would be many historical places of Bangladesh. So the main objective of the gamer in a word is “Freeing the Bengalis” as well as “Freeing Bangladesh”.
+
 # Installing and Playing Process
   ## Step 1 : Downloading
   Download Directly on your linux(Ubuntu Based or similiar) device as zip or using "git clone"
@@ -16,13 +17,12 @@ The Hero of this game is a freedom fighter named “Aresan” whose objective is
     ./WOI-1971 
   or,
     make play
-
   ## Another Way
   You can directly download this script and run it in our computer and directly start playing
   Download Link of Direct Installation of WOI-1971 : 
-
-
-
+    https://drive.google.com/file/d/1PCMok5cw9Xp8YZpv5k4xY40c09rnGcR8/
+  Go to Download Folder and Open Terminal and Type The Following:
+    chmod +x gameinstall.sh && ./gameinstall.sh
 
 # Objectives
 

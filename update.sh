@@ -2,8 +2,9 @@
 
 #All Changes Discarded
 git reset --hard HEAD;
-echo “\nAll Changes Made to game code by user discarded\n”
+echo “All Changes Made to game code by user discarded”
 
 #Geting Latest Code
+echo “Game Updating.....................”
 git pull;
-echo “\nGame Updating.....\n”
+

@@ -20,7 +20,7 @@ The Hero of this game is a freedom fighter named “Aresan” whose objective is
   ## Another Way
   You can directly download this script and run it in our computer and directly start playing
   Download Link of Direct Installation of WOI-1971 : 
-    https://drive.google.com/file/d/1PCMok5cw9Xp8YZpv5k4xY40c09rnGcR8/
+    https://drive.google.com/uc?export=download&id=1i8SkAuo6q7Sa-TxaRrtHTkzQQLEEKnMvfile/d/1PCMok5cw9Xp8YZpv5k4xY40c09rnGcR8/
   Go to Download Folder and Open Terminal and Type The Following:
     chmod +x gameinstall.sh && ./gameinstall.sh
 

@@ -18,6 +18,9 @@ void mainmenuinit()
     hisp = TM.ReturnTexture("assets/highscorep.png", renderer);
     settingsp = TM.ReturnTexture("assets/settingsp.png", renderer);
     storyp = TM.ReturnTexture("assets/storyp.png", renderer);
+    storyback = TM.ReturnTexture("assets/storyb.png", renderer);
+    nextlevel = TM.ReturnTexture("assets/nextlevel.png", renderer);
+    nextlevelp = TM.ReturnTexture("assets/nextlevelp.png", renderer);
 
     
     //Playing the music for 1st page according to the state of Sound System
@@ -46,16 +49,16 @@ void mainmenurender()
 {
     TM.drawsame(0, 0, bg, renderer);
     
-    if(keypressed==11) TM.drawsame(405, 95, con, renderer);
-    else TM.drawsame(405, 95, conp, renderer);
-    if(keypressed==12) TM.drawsame(405, 217, newg, renderer);
-    else TM.drawsame(405, 217, newgp, renderer);
-    if(keypressed==13) TM.drawsame(405, 339, his, renderer);
-    else TM.drawsame(405, 339, hisp, renderer);
-    if(keypressed==20) TM.drawsame(405, 461, settings, renderer);
-    else TM.drawsame(405, 461, settingsp, renderer);
-    if(keypressed==15) TM.drawsame(405, 583, story, renderer);
-    else TM.drawsame(405, 583, storyp, renderer);
+    if(keypressed==11) TM.drawsame(405, 95, conp, renderer);
+    else TM.drawsame(405, 95, con, renderer);
+    if(keypressed==12) TM.drawsame(405, 217, newgp, renderer);
+    else TM.drawsame(405, 217, newg, renderer);
+    if(keypressed==13) TM.drawsame(405, 339, hisp, renderer);
+    else TM.drawsame(405, 339, his, renderer);
+    if(keypressed==20) TM.drawsame(405, 461, settingsp, renderer);
+    else TM.drawsame(405, 461, settings, renderer);
+    if(keypressed==15) {TM.drawsame(405, 583, storyp, renderer); StoryScript = 1;}
+    else TM.drawsame(405, 583, story, renderer);
     
      if(keypressed==11 || keypressed==12) gameplay=1;
 
@@ -113,7 +116,7 @@ void mainmenuupdate()
             keypressed=15;
             //TM.drawsame(405, 583, storyp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
-            StoryScript = 1;
+            
         }
     }
 }

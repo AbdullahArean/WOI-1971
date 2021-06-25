@@ -8,7 +8,7 @@
 #include "settings.h"
 #include "pause.h"
 #include "lastpage.h"
-
+#include "story.h"
 typedef struct Game
 {
 
@@ -33,8 +33,13 @@ typedef struct Game
         SDL_RenderPresent(renderer);
         // clear the window to black
         SDL_RenderClear(renderer);
+        
         if (gameplay == 0 && keypressed < 19)
-            mainmenurender();
+        {
+            (StoryScript==1)?srender():mainmenurender();
+
+        }
+            
         if (gameplay == 0 && keypressed >= 19)
             settingsrender();
         if (gameplay == 1)
@@ -101,7 +106,7 @@ typedef struct Game
             delta_time = (SDL_GetTicks() - last_frame_time) / 1000.0f;
             last_frame_time = SDL_GetTicks();
             if (gameplay == 0 && keypressed < 19)
-                mainmenuupdate();
+                {(StoryScript==1)?supdate():mainmenuupdate();}
             if (gameplay == 0 && keypressed >= 19)
                 settingsupdate();
             if (gameplay == 1)

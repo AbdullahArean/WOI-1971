@@ -29,15 +29,16 @@ void lastpagerender()
         TM5.drawsame(405, 95, re, renderer);
     if (lkeypressed == 12)
     {
-        TM5.drawsame(405, 217, newgp, renderer); //start gameplay
+        TM5.drawsame(405, 217, nextlevelp, renderer); //start gameplay
+        gameover=0;
     }
     else
-        TM5.drawsame(405, 217, newg, renderer);
+        TM5.drawsame(405, 217, nextlevel, renderer);
         
     if (lkeypressed == 13)
-        TM5.drawsame(405, 339, sa, renderer);
-    else
         TM5.drawsame(405, 339, sap, renderer);
+    else
+        TM5.drawsame(405, 339, sa, renderer);
     if (lkeypressed == 14)
     {
         game_running = 0;

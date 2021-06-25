@@ -102,6 +102,8 @@ SDL_Texture *newgp = NULL;
 SDL_Texture *hisp = NULL;
 SDL_Texture *settingsp = NULL;
 SDL_Texture *storyp = NULL;
+SDL_Texture *nextlevelp = NULL;
+SDL_Texture *nextlevel = NULL;
 
 //SDL Textures for settings
 SDL_Texture *son = NULL;
@@ -130,6 +132,7 @@ SDL_Texture *i1t = NULL;
 SDL_Texture *t1t = NULL;
 SDL_Texture *bu = NULL;
 SDL_Texture *bu1 = NULL;
+SDL_Texture *storyback = NULL;
 
 #include "player.h"
 Player p1;

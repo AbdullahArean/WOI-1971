@@ -28,13 +28,13 @@ void parender()
     else
         TM4.drawsame(405, 95, con, renderer);
     if (pkeypressed == 32)
-        {TM4.drawsame(405, 217, mainmenup, renderer); gameplay=0;pause=0;}
+        {TM4.drawsame(405, 217, exip, renderer); game_running=0;}
     else
-        TM4.drawsame(405, 217,mainmenu, renderer);
+        TM4.drawsame(405, 217, exi, renderer);
     if (pkeypressed == 33)
-        {TM4.drawsame(405, 339, exip, renderer); game_running=0;}
+        {TM4.drawsame(405, 339, mainmenup, renderer); gameplay=0;pause=0;}
     else
-        TM4.drawsame(405, 339, exi, renderer);
+        TM4.drawsame(405, 339, mainmenu, renderer);
 
     
     

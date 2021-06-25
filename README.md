@@ -6,13 +6,13 @@ Then the war began.
 The Hero of this game is a freedom fighter named “Aresan” whose objective is to free Bangladesh from the Pakistani Military Junta. Gamers will try to kill all of them while not hurting any innocent Bengali. The enemies will also fire and if the bullet touches the hero, the health will decrease. If a Gamer kills a certain number of Military (earns a certain number of points), he will conquer that place and the next battle place will be unlocked. In this game, the battle place would be many historical places of Bangladesh. So the main objective of the gamer in a word is “Freeing the Bengalis” as well as “Freeing Bangladesh”.
 
 # Installing and Playing Process
-  ## Step 1 : Downloading
+  ### Step 1 : Downloading
   Download Directly on your linux(Ubuntu Based or similiar) device as zip or using "git clone"
     https://github.com/AbdullahA971rean/WOI-1971
-  ## Step 2 : Installing
+  ### Step 2 : Installing
   Go to "WOI-1971" Folder(Newly Cloned or downloaded) through Terminal and run the following command
     ./install.sh
-  ## Step 3 : Play the game
+  ### Step 3 : Play the game
   Give The Following command  
     ./WOI-1971 
   or,

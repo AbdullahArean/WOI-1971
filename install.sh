@@ -20,6 +20,8 @@ make;
 #Message showing the game installed
 echo “WOI-1971 installed Successfully”
 
+#Making Update executable
+chmod +x update.sh;
 #Running the game
-make play;
+#make play;
 

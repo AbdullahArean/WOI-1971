@@ -2,7 +2,7 @@
 ![WOI-1971 Logo](assets/woinewhomepage.png)
 
 ##  **Introduction**
-**War Of Independence-1971**(WOI-1971) is an SDL-based action game written in C language. Simple, clear, and easily customizable code made this game distinctive. Based on the Bangladeshi people's war of independence against Pakistani military forces in 1971. The bravery of the Bangladeshi Freedom Fighters is honored with great reverence in this game. 
+**War Of Independence-1971** (WOI-1971) is an SDL-based action game written in C language. Simple, clear, and easily customizable code made this game distinctive. Based on the Bangladeshi people's war of independence against Pakistani military forces in 1971. The bravery of the Bangladeshi Freedom Fighters is honored with great reverence in this game. 
 
 ## **Installation**
 1. **Downloading the Game Resources:** 
@@ -26,8 +26,7 @@
 
   ### Direct installation and Play 
   1. **Download:** You can directly download the following script and run it in our device (Debian-based).No Prerequisite Needed.
-  
-    https://drive.google.com/uc?export=download&id=1i8SkAuo6q7Sa-TxaRrtHTkzQQLEEKnMv 
+  https://drive.google.com/uc?export=download&id=1i8SkAuo6q7Sa-TxaRrtHTkzQQLEEKnMv 
 
   2. **Install & Run:** Go to Download Folder and Open Terminal and Type The Following:
   ```bash

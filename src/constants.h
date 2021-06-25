@@ -13,7 +13,7 @@
 #include "clean.h"
 #include "sound.h"
 #include "font.h"
-//#include "player.h"
+
 
 //Defining Macro
 #define FALSE 0
@@ -34,6 +34,11 @@
 double last_frame_time;
 double delta_time;
 
+int pinterval=500;
+int einterval=5000;
+
+int shieldnumber=3;
+int sn=0;
 //variable to keep game state
 bool game_running = 1;
 
@@ -52,6 +57,8 @@ int keypressed = 0;
 //If Game is paused
 int pause = 0;
 
+//shield
+ bool shield =0;
 //Indicating Three Rows
 int row1 = 0;
 int row2 = 63;
@@ -123,5 +130,21 @@ SDL_Texture *i1t = NULL;
 SDL_Texture *t1t = NULL;
 SDL_Texture *bu = NULL;
 SDL_Texture *bu1 = NULL;
+
+#include "player.h"
+Player p1;
+#include "enemy.h"
+Enemy e1[10];
+#include "tank.h"
+Tank t1[10];
+#include "innocent.h"
+Innocent i1[10];
+#include "bullet.h"
+Bullet b1[10000];
+//Bullet b2[10000];
+
+
+
+
 
 #endif

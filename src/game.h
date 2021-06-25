@@ -83,6 +83,9 @@ typedef struct Game
                  case SDLK_SPACE:
                     shot=1;
                     break;
+                case SDLK_s:
+                    shield=1;
+                    break;
 
                 default:
                     //printf("Default\n");

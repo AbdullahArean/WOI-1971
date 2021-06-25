@@ -5,6 +5,7 @@
 
 typedef struct TANK{
 //Global Variables
+    EBullet b2[10000];
     SDL_Rect srcRect;
     SDL_Rect desRect;
     
@@ -16,7 +17,10 @@ typedef struct TANK{
     double psi_y = WINDOW_HEIGHT-180-row3;
     double x_vel = 30;
     double y_vel = 30;
-    bool ft=0;
+
+    int keeptrack = 0;
+    bool ft = 0, ff=0; 
+    int enemybulletno = 0;
 
 
     //Draw
@@ -32,7 +36,15 @@ typedef struct TANK{
         desRect.x = psi_x;
         desRect.y = psi_y;
         SDL_RenderCopyEx(pRenderer, pTexture, &srcRect, &desRect, 0, 0, flip);
-        //SDL_RenderPresent(pRenderer);
+        if ((int)(SDL_GetTicks() - keeptrack) >= einterval)
+            {
+                enemybulletno++;
+                keeptrack = SDL_GetTicks();
+            }
+            for (int i = 0; i < enemybulletno; i++)
+            {
+                b2[i].Bulletfire(psi_x, psi_y + 24, bu1, renderer, SDL_FLIP_NONE);
+            }
         }
     }
     void tankupdate(double row, double v_vel)
@@ -59,6 +71,11 @@ typedef struct TANK{
         // set the positions in the struct
         desRect.x = (int)psi_x;
         desRect.y = (int)psi_y;
+
+        for (int i = 0; i < enemybulletno; i++)
+            {
+                b2[i].update(-1,20);
+            }
         }
     }
    void updatehealth(int command)

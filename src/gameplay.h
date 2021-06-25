@@ -12,22 +12,15 @@
 #include "lastpage.h"
 
 TextureManager TM2;
-Player p1;
-Enemy e1[10];
-// Enemy e2;
-// Enemy e3;
-Innocent i1[10];
-//Innocent i2;
-Tank t1[10];
-Bullet b1[10000];
-Bullet test;
+int keeptrack = 0;
+bool ff=0;
 
 void gameplayinit()
 {
     gbg = TM2.ReturnTexture("assets/gameback.png", renderer);
     p1t = TM2.ReturnTexture("assets/hero.png", renderer);
     e1t = TM2.ReturnTexture("assets/enemy2.png", renderer);
-    e2t = TM2.ReturnTexture("assets/enemy2.png", renderer);
+    e2t = TM2.ReturnTexture("assets/enemy1.png", renderer);
     i1t = TM2.ReturnTexture("assets/innocent.png", renderer);
     t1t = TM2.ReturnTexture("assets/tank1.png", renderer);
     ppt = TM2.ReturnTexture("assets/pp.png", renderer);
@@ -42,22 +35,33 @@ void gameplayrender()
 
     }
     else{
-
+         if (!ff)
+            {
+            
+                keeptrack = SDL_GetTicks();
+                ff = 1;
+            }
     TM2.drawsame(0, 0, gbg, renderer);
-    p1.playerrender(160, 180, p1t, renderer, SDL_FLIP_NONE);
-    if(pscore>=100) t1[0].TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300, 180, t1t, renderer, SDL_FLIP_NONE);
-    if(pscore>=300) t1[1].TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300, 180, t1t, renderer, SDL_FLIP_NONE);
-    e1[0].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row3, 160, 180, e1t, renderer, SDL_FLIP_NONE);
-    e1[1].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row2, 160, 180, e2t, renderer, SDL_FLIP_NONE);
+    p1.playerrender(160*0.75, 180*0.75, p1t, renderer, SDL_FLIP_NONE);
+    if(pscore>=100) t1[0].TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300*0.8, 180*0.8, t1t, renderer, SDL_FLIP_NONE);
+    if(pscore>=300) t1[1].TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300*0.8, 180*0.8, t1t, renderer, SDL_FLIP_NONE);
+    e1[0].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row3, 160*0.8, 180*0.8, e1t, renderer, SDL_FLIP_NONE);
+    e1[1].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row2, 160*0.8, 180*0.8, e2t, renderer, SDL_FLIP_NONE);
     //e3.EnemyRender(WINDOW_WIDTH-160,WINDOW_HEIGHT-180-row1,160,180,e2t,renderer, SDL_FLIP_NONE);
-    i1[0].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 160, 180, i1t, renderer, SDL_FLIP_NONE);
-    i1[1].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 160, 180, i1t, renderer, SDL_FLIP_NONE);
+    i1[0].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 100*0.8, 180*0.8, i1t, renderer, SDL_FLIP_NONE);
+    i1[1].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 100*0.8, 180*0.8, i1t, renderer, SDL_FLIP_NONE);
     //bullet
-    if(shot==1) bn++;
+    
+    if(shot==1 && (int)(SDL_GetTicks() - keeptrack) >= pinterval) 
+    {
+        bn++;
+        keeptrack = SDL_GetTicks();
+
+    }
     shot=0;
     for(int i=0; i<bn; i++)
     {
-        b1[i].Bulletfire(p1.ReturnPlayerPositionx()+160,p1.ReturnPlayerPositiony()+34, bu, renderer, SDL_FLIP_NONE);
+        b1[i].Bulletfire(p1.ReturnPositionx()+160*0.75,p1.ReturnPositiony()+34*0.75, bu, renderer, SDL_FLIP_NONE);
     }
     }
     
@@ -95,9 +99,9 @@ void gameplayupdate()
     //e3.enemyupdate(row3,60);
     i1[0].Innocentupdate(row1, 70);
     i1[1].Innocentupdate(row2, 80);
-    if(pscore>=100) t1[0].tankupdate(row3, 30);
+    if(pscore>=100) t1[0].tankupdate(row3, 40);
 
-    if(pscore>=300) t1[1].tankupdate(row3, 30);
+    if(pscore>=300) t1[1].tankupdate(row1, 40);
     for(int i=0; i<bn; i++)
     {
         b1[i].update(+1);

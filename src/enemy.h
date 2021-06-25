@@ -2,9 +2,12 @@
 #define ENEMY_H
 
 #include "constants.h"
+#include "ebullet.h"
 
 typedef struct Enemy //enemy structure
 {
+
+EBullet b2[10000];
     //Rectangle to keep track
     SDL_Rect srcRect;
     SDL_Rect desRect;
@@ -19,13 +22,23 @@ typedef struct Enemy //enemy structure
     double x_vel = 0.0; //velocity of x axis
     double y_vel = 0.0; //velocity of y axis
 
-    bool ft = 0; //used in update function to check if this is the first update or not
+    int keeptrack = 0;
+    bool ft = 0, ff=0; 
+    int enemybulletno = 0;
+
+    //bool ft = 0; //used in update function to check if this is the first update or not
 
     //render or draw 
     void EnemyRender(int x, int y, int width, int height, SDL_Texture *pTexture, SDL_Renderer *pRenderer, SDL_RendererFlip flip)
     {
         if (!dead) //checking if dead or not
         {
+             if (!ff)
+            {
+            
+                keeptrack = SDL_GetTicks();
+                ff = 1;
+            }
             //source rectangle denoting the texture or image source
             srcRect.x = 0; //source x position
             srcRect.y = 0;// source y position
@@ -42,6 +55,15 @@ typedef struct Enemy //enemy structure
 
 
             SDL_RenderCopyEx(pRenderer, pTexture, &srcRect, &desRect, 0, 0, flip);
+            if ((int)(SDL_GetTicks() - keeptrack) >= einterval)
+            {
+                enemybulletno++;
+                keeptrack = SDL_GetTicks();
+            }
+            for (int i = 0; i < enemybulletno; i++)
+            {
+                b2[i].Bulletfire(psi_x, psi_y + 34*0.80, bu1, renderer, SDL_FLIP_NONE);
+            }
         }
         //SDL_RenderPresent(pRenderer);
     }
@@ -77,6 +99,14 @@ typedef struct Enemy //enemy structure
             // set the positions in the struct
             desRect.x = (int)psi_x;
             desRect.y = (int)psi_y;
+
+            for (int i = 0; i < enemybulletno; i++)
+            {
+                b2[i].update(-1,10);
+            }
+                        //Bullet Firing
+            
+
         }
     }
     void updatehealth(int command)

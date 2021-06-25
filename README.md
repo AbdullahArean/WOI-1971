@@ -8,21 +8,28 @@ The Hero of this game is a freedom fighter named “Aresan” whose objective is
 # Installing and Playing Process
   ### Step 1 : Downloading
   Download Directly on your linux(Ubuntu Based or similiar) device as zip or using "git clone"
-    https://github.com/AbdullahA971rean/WOI-1971
+    
+    https://github.com/AbdullahArean/WOI-1971
   ### Step 2 : Installing
   Go to "WOI-1971" Folder(Newly Cloned or downloaded) through Terminal and run the following command
-    ./install.sh
+      ```bash
+      ./install.sh
+     ```
   ### Step 3 : Play the game
   Give The Following command  
-    ./WOI-1971 
+  ```bash
+      ./WOI-1971 
+  ```
   or,
     make play
-  ## Another Way
+  ## Another Way of Installing
   You can directly download this script and run it in our computer and directly start playing
   Download Link of Direct Installation of WOI-1971 : 
-    https://drive.google.com/uc?export=download&id=1i8SkAuo6q7Sa-TxaRrtHTkzQQLEEKnMvfile/d/1PCMok5cw9Xp8YZpv5k4xY40c09rnGcR8/
+    https://drive.google.com/uc?export=download&id=1i8SkAuo6q7Sa-TxaRrtHTkzQQLEEKnMv 
   Go to Download Folder and Open Terminal and Type The Following:
+  ```bash
     chmod +x gameinstall.sh && ./gameinstall.sh
+  ```
 
 # Objectives
 
@@ -53,8 +60,8 @@ After running the game, the gamer can directly select “Start” from the “Ma
   2. Structured Game Source Code Writing in C
   3. Code Testing and Bug Fixing    
 # Platform, Library & Tools
-  1. C/C++
-  2. SDL2 Library/SDL2_image Library
+  1. C/C++ Language, Bash Scripting
+  2. SDL2 Library,SDL2_image Library,SDL2 Mixer,SDL2 Font
   3. Inkscape (2D Graphics Design)
   4. GitHub(Version Control & Code Upload)
   5. VScode, Sublime Text, Code Blocks(Code Editor & IDE)

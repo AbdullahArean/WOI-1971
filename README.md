@@ -1,4 +1,5 @@
 # **War Of Independence-1971**(WOI-1971)
+![WOI-1971 Logo](assets/woinewhomepage.png)
 
 ##  **Introduction**
 **War Of Independence-1971**(WOI-1971) is an SDL-based action game written in C language. Simple, clear, and easily customizable code made this game distinctive. Based on the Bangladeshi people's war of independence against Pakistani military forces in 1971. The bravery of the Bangladeshi Freedom Fighters is honored with great reverence in this game. 
@@ -114,7 +115,7 @@ The War of Independence is a great event in the national history of Bangladesh. 
 
 ## **License**
 **Free Software, Hell Yeah!**
-# **Conclusions**
+## **Conclusions**
 Apart from learning new language and technology,this game-project taught us collaboration, pressure handling, peer communication and many other important qualities a software enginner should have. I hope we could implement these learning in our life in future. 
 
 

@@ -102,8 +102,10 @@ The War of Independence is a great event in the national history of Bangladesh. 
 
 ## **Github Repository**
 https://github.com/AbdullahA971rean/WOI-1971
+
 ## **YouTube Intro Video Link**
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1e38v-MTL8w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Game Video](https://img.youtube.com/vi/1e38v-MTL8w/0.jpg)](https://www.youtube.com/watch?v=1e38v-MTL8w)
+
 ## **References**
 ### SDL Learning Sources:
         https://lazyfoo.net/tutorials/SDL/

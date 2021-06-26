@@ -58,7 +58,7 @@ void lastpagerender()
         printf(":::::::SAVE SCORE::::::::\n");
         printf("Type Your Name and Press Enter to Save Your Score:\n");
         scanf("%[^\n]", name);
-        printf("Score Saved Successfully!");
+        printf("Score Saved Successfully!\n");
 
         //file handling
         fr = fopen("Score.txt", "a");

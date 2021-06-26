@@ -15,3 +15,4 @@ Shanto 560
 Rhino 1700
 Shanto 1810Arean 730
 Arean 1000
+Arean 700

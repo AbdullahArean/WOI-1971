@@ -10,6 +10,7 @@
 #include "innocent.h"
 #include "bullet.h"
 #include "lastpage.h"
+#include "pause.h"
 
 TextureManager TM2;
 int keeptrack = 0;
@@ -34,6 +35,10 @@ void gameplayrender()
     {
         lastpagerender();
     }
+    // if(pause==1)
+    // {
+    //     paupdate();
+    // }
     else
     {
         if (!ff)
@@ -45,16 +50,27 @@ void gameplayrender()
 
         TM2.drawsame(0, 0, gbg, renderer);
         p1.playerrender(160 * 0.75, 180 * 0.75, p1t, renderer, SDL_FLIP_NONE);
-        if (pscore >= 100)
-            t1[0].TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300 * 0.8, 180 * 0.8, t1t, renderer, SDL_FLIP_NONE);
-        if (pscore >= 300)
-            t1[1].TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300 * 0.8, 180 * 0.8, t1t, renderer, SDL_FLIP_NONE);
-        e1[0].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row3, 160 * 0.8, 180 * 0.8, e1t, renderer, SDL_FLIP_NONE);
-        e1[1].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row2, 160 * 0.8, 180 * 0.8, e2t, renderer, SDL_FLIP_NONE);
-        i1[0].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 100 * 0.8, 180 * 0.8, i1t, renderer, SDL_FLIP_NONE);
-        i1[1].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 100 * 0.8, 180 * 0.8, i1t, renderer, SDL_FLIP_NONE);
-        //bullet
-
+        if(gamelevel==1 && pscore<50)
+        {
+            e1[0].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row3, 160 * 0.8, 180 * 0.8, e1t, renderer, SDL_FLIP_NONE);
+            if(pscore>20) i1[0].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 100 * 0.8, 180 * 0.8, i1t, renderer, SDL_FLIP_NONE);
+        }
+        if(gamelevel==1 && pscore==50)
+        {
+            gameover=1;
+        }
+        // e1[0].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row3, 160 * 0.8, 180 * 0.8, e1t, renderer, SDL_FLIP_NONE);
+        // e1[1].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row3, 160 * 0.8, 180 * 0.8, e1t, renderer, SDL_FLIP_NONE);
+        // if (pscore >= 100)
+        //     t1[0].TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300 * 0.8, 180 * 0.8, t1t, renderer, SDL_FLIP_NONE);
+        // if (pscore >= 300)
+        //     t1[1].TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300 * 0.8, 180 * 0.8, t1t, renderer, SDL_FLIP_NONE);
+        
+        // e1[1].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row2, 160 * 0.8, 180 * 0.8, e2t, renderer, SDL_FLIP_NONE);
+        
+        // i1[1].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 100 * 0.8, 180 * 0.8, i1t, renderer, SDL_FLIP_NONE);
+        
+        //Bullet Firing
         if (shot == 1 && (int)(SDL_GetTicks() - keeptrack) >= pinterval)
         {
             bn++;
@@ -65,29 +81,19 @@ void gameplayrender()
         {
             b1[i].Bulletfire(p1.ReturnPositionx() + 160 * 0.75, p1.ReturnPositiony() + 34 * 0.75, bu, renderer, SDL_FLIP_NONE);
         }
-
-        SDL_Texture *score_tex = NULL;
-        SDL_Color score_color = {255,255,255, 255};
-        Font fscore;
+        //Displaying Scores, health, shield
+        
         score_tex = fscore.Loadfont(renderer, "assets/fare.ttf", 50, SDL_itoa(pscore, scorestr, 10), score_color);
         fscore.display( 560,45, renderer, score_tex);
-
         //For displaying Remaining sheild number
-        SDL_Texture *shieldtex = NULL;
-        SDL_Color sn_color = {255,255,255, 255};
-        Font fsheild;
+        
         shieldtex = fsheild.Loadfont(renderer, "assets/fare.ttf", 50, SDL_itoa(shieldnumber - sn, scorestr, 10), sn_color);
         fsheild.display( 312,45, renderer, shieldtex);
-        SDL_Texture *leveltex = NULL;
-        SDL_Color level_color = {255,255,255, 255};
-        Font flevel;
+        
         leveltex = flevel.Loadfont(renderer, "assets/fare.ttf", 50, SDL_itoa(gamelevel, scorestr, 10), level_color);
         fsheild.display( 65,45, renderer, leveltex);
-
         //For displaying player health
-        SDL_Texture *healthtex = NULL;
-        SDL_Color health_color = {255,255,255, 255};
-        Font fhealth;
+        
         healthtex = fhealth.Loadfont(renderer, "assets/fare.ttf", 50, SDL_itoa(phealth, healthstr, 10), health_color);
         fhealth.display(806,45,  renderer, healthtex);
     }
@@ -104,6 +110,10 @@ void gameplayupdate()
     {
         lupdate();
     }
+    // if(pause==1)
+    // {
+    //     parender();
+    // }
     else
     {
 
@@ -120,17 +130,19 @@ void gameplayupdate()
         }
         //b1.Bulletupdate(row1, 40);
         p1.playerupdate();
-
+        if(gamelevel==1 && pscore<50)
+        {
         e1[0].enemyupdate(row1, 40);
-        e1[1].enemyupdate(row2, 50);
-        //e3.enemyupdate(row3,60);
-        i1[0].Innocentupdate(row1, 70);
-        i1[1].Innocentupdate(row2, 80);
-        if (pscore >= 100)
-            t1[0].tankupdate(row3, 40);
+        if(pscore>20) i1[0].Innocentupdate(row1, 70);
+        }
 
-        if (pscore >= 300)
-            t1[1].tankupdate(row1, 40);
+        
+        // i1[1].Innocentupdate(row2, 80);
+        // if (pscore >= 100)
+        //     t1[0].tankupdate(row3, 40);
+
+        // if (pscore >= 300)
+        //     t1[1].tankupdate(row1, 40);
         for (int i = 0; i < bn; i++)
         {
             b1[i].update(+1);

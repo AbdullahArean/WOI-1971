@@ -30,6 +30,10 @@ void lastpagerender()
     if (lkeypressed == 12)
     {
         TM5.drawsame(405, 217, nextlevelp, renderer); //start gameplay
+        gamelevel++;
+        shieldnumber++;
+        sn=0;
+        phealth+=10;
         gameover=0;
     }
     else

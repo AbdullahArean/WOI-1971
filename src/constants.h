@@ -147,16 +147,26 @@ SDL_Texture *storyback = NULL;
 #include "player.h"
 Player p1;
 #include "enemy.h"
-Enemy e1[10];
+Enemy e1[200];
 #include "tank.h"
-Tank t1[10];
+Tank t1[100];
 #include "innocent.h"
-Innocent i1[10];
+Innocent i1[200];
 #include "bullet.h"
 Bullet b1[10000];
 //Bullet b2[10000];
 
+SDL_Texture *score_tex = NULL;
+        SDL_Color score_color = {255,255,255, 255};
+        Font fscore;
 
-
-
+SDL_Texture *shieldtex = NULL;
+        SDL_Color sn_color = {255,255,255, 255};
+        Font fsheild;
+SDL_Texture *leveltex = NULL;
+        SDL_Color level_color = {255,255,255, 255};
+        Font flevel;
+SDL_Texture *healthtex = NULL;
+        SDL_Color health_color = {255,255,255, 255};
+        Font fhealth;
 #endif

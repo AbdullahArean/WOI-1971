@@ -47,7 +47,7 @@ typedef struct Player
                     fs = 1;
                 keeptracksh = SDL_GetTicks();
                 sn++;
-                printf("Shield remaining==>%d\n ", shieldnumber - sn);
+                //printf("Shield remaining==>%d\n ", shieldnumber - sn);
 
                 }
                 
@@ -60,7 +60,7 @@ typedef struct Player
             }
             if (shield == 1)
             {
-                sh.draw(psi_x+180*0.75, psi_y, 20, 180, newg, renderer, SDL_FLIP_HORIZONTAL);
+                sh.draw(psi_x+90*0.75, psi_y, 90*0.75*0.65, 180*0.75*0.65, shie, renderer, SDL_FLIP_NONE);
             }
         }
     }

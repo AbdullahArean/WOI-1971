@@ -13,7 +13,7 @@
 #include <SDL2/SDL_ttf.h>
 
 //Header Files
-#include "clean.h"
+
 #include "sound.h"
 #include "font.h"
 
@@ -62,7 +62,8 @@ int InnocentNumber = 200;                  //Maximum EnemyNumber
 int phealth = 100;                         //Player health
 int pscore = 0;                            //Player Score
 int gamelevel = 1;                         //variable denoting game level
-
+int bvelocity = 300; //Player Bullet Velocity
+int evelocity = 300;                      //Enemy Bullet Velocity
 //string for showing the font
 char scorestr[11];
 char shieldstr[11];
@@ -135,6 +136,6 @@ Tank t1[100];
 Innocent i1[200];
 
 
-
+#include "clean.h"
 
 #endif

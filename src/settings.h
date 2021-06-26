@@ -7,13 +7,7 @@
 TextureManager TM3;
 void settingsinit()
 {
-    son = TM3.ReturnTexture("assets/son.png", renderer);
-    sonp = TM3.ReturnTexture("assets/sonp.png", renderer);
-    soff = TM3.ReturnTexture("assets/soff.png", renderer);
-    soffp = TM3.ReturnTexture("assets/soffp.png", renderer);
-    mainmenu = TM3.ReturnTexture("assets/mainmenu.png", renderer);
-    mainmenup = TM3.ReturnTexture("assets/mainmenup.png", renderer);
-
+    
     //Playing the music for 1st page according to the state of Sound System
     if (sound_state)
     {
@@ -37,13 +31,6 @@ void settingsrender()
         TM3.drawsame(405, 339, mainmenu, renderer);
     else
         TM3.drawsame(405, 339, mainmenup, renderer);
-    // if(keypressed==14) TM.drawsame(405, 461, settings, renderer);
-    // else TM.drawsame(405, 461, settingsp, renderer);
-    // if(keypressed==15) TM.drawsame(405, 583, story, renderer);
-    // else TM.drawsame(405, 583, storyp, renderer);
-
-    //  if(keypressed==11 || keypressed==12) gameplay=1;
-
     keypressed = 19;
 }
 
@@ -80,21 +67,7 @@ void settingsupdate()
             //TM.drawsame(405, 339, hisp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
         }
-        // if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 461 && mousey <= 461 + 91)
-        // {
-        //     Mix_HaltMusic();
-        //     keypressed=14;
-        //     //TM.drawsame(405, 461, settingsp, renderer);
-        //     //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
-        // }
-        // if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 583 && mousey <= 583 + 91)
-        // {
-        //     Mix_HaltMusic();
-        //     keypressed=15;
-        //     //TM.drawsame(405, 583, storyp, renderer);
-        //     //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
-        //     StoryScript = 1;
-        // }
+        
     }
 }
 #endif

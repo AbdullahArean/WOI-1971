@@ -10,7 +10,7 @@ typedef struct TANK{
     SDL_Rect desRect;
     
     //Scoring Variable
-    int health=500;
+    int health=200;
     bool dead=0;
 
     double psi_x = WINDOW_WIDTH-160;

@@ -3,16 +3,15 @@
 
 #include "constants.h"
 #include "texturemanager.h"
-int lkeypressed = 0;
-TextureManager TM5;
+
+int lkeypressed = 0; //variable to keep track which key pressed
+
+TextureManager TM5; //declared texture manager
+FILE *fr;           //File handling
+
 void lastpageinit()
 {
-    re = TM5.ReturnTexture("assets/replay.png", renderer);
-    sa = TM5.ReturnTexture("assets/savescore.png", renderer);
-    rep = TM5.ReturnTexture("assets/replayp.png", renderer);
-    sap = TM5.ReturnTexture("assets/savescorep.png", renderer);
-
-    //Playing the music for 1st page according to the state of Sound System
+    //Playing the music  according to the state of Sound System
     if (sound_state)
     {
         Mix_Music *bMusic2 = Mix_LoadMUS("assets/secondpage.mp3");
@@ -21,26 +20,59 @@ void lastpageinit()
 }
 void lastpagerender()
 {
-    TM5.drawsame(0, 0, bg, renderer);
+    TM5.drawsame(0, 0, bg, renderer); //drawing background
 
+    //doing according to the key pressed
     if (lkeypressed == 11)
         TM5.drawsame(405, 95, rep, renderer);
     else
         TM5.drawsame(405, 95, re, renderer);
     if (lkeypressed == 12)
     {
+        //When One level is passed it is pressed to goto next
         TM5.drawsame(405, 217, nextlevelp, renderer); //start gameplay
-        gamelevel++;
-        shieldnumber++;
-        sn=0;
-        phealth+=10;
-        gameover=0;
+        if (phealth > 0)
+        {
+            gamelevel++;     //game level increase
+            shieldnumber++;  //shield number increase
+            sn = 0;          //current shield
+            phealth += 10;   //player health increase
+            SPEED += 10;     //Player speed increase
+            pinterval -= 30; //Player firing interval decreased
+            gameover = 0;    //gameover is 0
+        }
     }
     else
         TM5.drawsame(405, 217, nextlevel, renderer);
-        
+
     if (lkeypressed == 13)
+    {
+
+        //Saving score
         TM5.drawsame(405, 339, sap, renderer);
+
+        char name[50];
+        extern int pscore;
+
+        //instruction and input
+        printf(":::::::SAVE SCORE::::::::\n");
+        printf("Type Your Name and Press Enter to Save Your Score:\n");
+        scanf("%[^\n]", name);
+        printf("Score Saved Successfully!");
+
+        //file handling
+        fr = fopen("Score.txt", "a");
+        if (fr == NULL)
+        {
+            printf("File Can't Write\n");
+        }
+        else
+        {
+            fprintf(fr, "%s %d\n", name, pscore);
+        }
+
+        fclose(fr); //closing file
+    }
     else
         TM5.drawsame(405, 339, sa, renderer);
     if (lkeypressed == 14)
@@ -53,7 +85,7 @@ void lastpagerender()
 
     lkeypressed = 0;
 }
-
+//lastpage update
 void lupdate()
 {
 
@@ -64,27 +96,20 @@ void lupdate()
 
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 95 && mousey <= 95 + 91)
         {
-            Mix_HaltMusic();
             lkeypressed = 11;
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 217 && mousey <= 217 + 91)
         {
-            Mix_HaltMusic();
             lkeypressed = 12;
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 339 && mousey <= 339 + 91)
         {
-            //Mix_HaltMusic();
             lkeypressed = 13;
-            //TM.drawsame(405, 339, hisp, renderer);
-            //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 461 && mousey <= 461 + 91)
         {
             Mix_HaltMusic();
             lkeypressed = 14;
-            //TM.drawsame(405, 461, settingsp, renderer);
-            //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
         }
     }
 }

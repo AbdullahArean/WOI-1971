@@ -12,7 +12,7 @@ EBullet b2[10000];
     SDL_Rect srcRect;
     SDL_Rect desRect;
 
-    //Scoring Variable
+    
     int health = 100; //denoting enemy health
     bool dead = 0;    //denoting enemy is dead or not
 
@@ -39,7 +39,7 @@ EBullet b2[10000];
                 keeptrack = SDL_GetTicks();
                 ff = 1;
             }
-            //source rectangle denoting the texture or image source
+            // source y position
             srcRect.x = 0; //source x position
             srcRect.y = 0;// source y position
 
@@ -77,8 +77,8 @@ EBullet b2[10000];
                 x_vel = v_vel;
                 ft = 1;
             }
-            psi_x -= x_vel * delta_time; //x_vel ;// 60;
-            psi_y -= y_vel * delta_time; //y_vel;// 60;
+            psi_x -= x_vel * delta_time; 
+            psi_y -= y_vel * delta_time; 
 
             // collision detection with bounds
             if (psi_x >= WINDOW_WIDTH - desRect.w)
@@ -99,12 +99,13 @@ EBullet b2[10000];
             // set the positions in the struct
             desRect.x = (int)psi_x;
             desRect.y = (int)psi_y;
-
+            
+            //Bullet Firing
             for (int i = 0; i < enemybulletno; i++)
             {
                 b2[i].update(-1,10);
             }
-                        //Bullet Firing
+                        
             
 
         }

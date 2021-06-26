@@ -1,6 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
-
+//User Defined Header File
 #include "constants.h"
 #include "gameplay.h"
 #include "mainmenu.h"
@@ -9,9 +9,10 @@
 #include "pause.h"
 #include "lastpage.h"
 #include "story.h"
+
 typedef struct Game
 {
-
+    //initializing Game structure
     void init()
     {
         if (gameinitialization("WOI-1971", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT) == FALSE)
@@ -19,37 +20,39 @@ typedef struct Game
             Clean(window, renderer);
             game_running = 0;
         };
-        //Play the music.....
+
+        //Playing the music
         Mix_Music *bMusic1 = Mix_LoadMUS("assets/firstpage.mp3");
         Mix_PlayMusic(bMusic1, -1);
+
+        //Initializng
         mainmenuinit();
         gameplayinit();
         settingsinit();
         painit();
         lastpageinit();
     }
+    //Rendering the game
     void render()
     {
+        //Presenting Renderer
         SDL_RenderPresent(renderer);
         // clear the window to black
         SDL_RenderClear(renderer);
-        
+        //Checking and displaying accordingly
         if (gameplay == 0 && keypressed < 19)
         {
-            (StoryScript==1)?srender():mainmenurender();
-
+            (StoryScript == 1) ? srender() : mainmenurender();
         }
-            
         if (gameplay == 0 && keypressed >= 19)
             settingsrender();
         if (gameplay == 1)
         {
             (pause == 1) ? parender() : gameplayrender();
         }
-
         SDL_RenderPresent(renderer);
-        //SDL_Delay(5000);
     }
+    //Handling Events in game structure
     void handleEvents()
     {
         SDL_Event e;
@@ -58,7 +61,7 @@ typedef struct Game
             //User requests quit
             if (e.type == SDL_QUIT)
             {
-                game_running=0;
+                game_running = 0;
             }
             //User presses a key
             else if (e.type == SDL_KEYDOWN)
@@ -68,30 +71,28 @@ typedef struct Game
                 {
                 case SDLK_UP:
                     //printf("Up\n");
-                    up=1;
+                    up = 1;
                     break;
-
                 case SDLK_DOWN:
                     //printf("Down\n");
-                    down=1;
+                    down = 1;
                     break;
-
                 case SDLK_LEFT:
                     //printf("left\n");
-                    left=1;
+                    left = 1;
                     break;
-
                 case SDLK_RIGHT:
                     //printf("right\n");
-                    right=1;
+                    right = 1;
                     break;
-                 case SDLK_SPACE:
-                    shot=1;
+                case SDLK_SPACE:
+                    //printf("Shot\n");
+                    shot = 1;
                     break;
                 case SDLK_s:
-                    shield=1;
+                    //printf("Shield\n");
+                    shield = 1;
                     break;
-
                 default:
                     //printf("Default\n");
                     break;
@@ -99,55 +100,36 @@ typedef struct Game
             }
         }
     }
-        void update()
-        {
-            while (!SDL_TICKS_PASSED(SDL_GetTicks(), last_frame_time + FRAME_TARGET_TIME))
-                ;
-            delta_time = (SDL_GetTicks() - last_frame_time) / 1000.0f;
-            last_frame_time = SDL_GetTicks();
-            if (gameplay == 0 && keypressed < 19)
-                {(StoryScript==1)?supdate():mainmenuupdate();}
-            if (gameplay == 0 && keypressed >= 19)
-                settingsupdate();
-            if (gameplay == 1)
-            {
-                (pause == 1) ? paupdate() : gameplayupdate();
-            }
-        }
+    void update()
+    {
+        //Getting Timing and making game predefined frame per second
+        while (!SDL_TICKS_PASSED(SDL_GetTicks(), last_frame_time + FRAME_TARGET_TIME))
+            ;
+        delta_time = (SDL_GetTicks() - last_frame_time) / 1000.0f; //Time to delay
+        last_frame_time = SDL_GetTicks();                          //keeping last frame time
 
-        void destroy_window()
+        //Checking what to execute
+        if (gameplay == 0 && keypressed < 19)
         {
-            Clean(window, renderer);
+            (StoryScript == 1) ? supdate() : mainmenuupdate();
         }
-
-        // a function to access the private running variable
-        bool running()
+        if (gameplay == 0 && keypressed >= 19)
+            settingsupdate();
+        if (gameplay == 1)
         {
-            if (game_running == 0)
-            {
-                //Clearing All The Textures
-                SDL_DestroyTexture(bg);
-                SDL_DestroyTexture(con);
-                SDL_DestroyTexture(conp);
-                SDL_DestroyTexture(newg);
-                SDL_DestroyTexture(newgp);
-                SDL_DestroyTexture(his);
-                SDL_DestroyTexture(hisp);
-                SDL_DestroyTexture(settings);
-                SDL_DestroyTexture(settingsp);
-                SDL_DestroyTexture(story);
-                SDL_DestroyTexture(storyp);
-                SDL_DestroyTexture(fpage);
-                SDL_DestroyTexture(gbg);
-                SDL_DestroyTexture(p1t);
-                SDL_DestroyTexture(e1t);
-                SDL_DestroyTexture(e2t);
-                SDL_DestroyTexture(i1t);
-                SDL_DestroyTexture(t1t);
-            }
-            //if(phealth<=0) game_running=0;
-            return game_running;
+            (pause == 1) ? paupdate() : gameplayupdate();
         }
     }
-Game;
+    //Destroying game window
+    void destroy_window()
+    {
+        Clean(window, renderer); //calling function from clean.h
+    }
+
+    // a function to access the game running variable
+    bool running()
+    {
+        return game_running;
+    }
+} Game;
 #endif

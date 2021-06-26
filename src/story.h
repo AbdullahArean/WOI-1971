@@ -3,7 +3,10 @@
 
 #include "constants.h"
 #include"texturemanager.h"
+
+//Key tracker variable
 int sp=0;
+
 TextureManager TMstory;
 void sinit()
 {
@@ -27,10 +30,8 @@ void supdate()
 
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 10 && mousey <= 20 + 91)
         {
-            //Mix_HaltMusic();
             sp=15;
-            //TM.drawsame(405, 583, storyp, renderer);
-            //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+
             
         }
     }

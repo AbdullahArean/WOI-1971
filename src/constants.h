@@ -11,11 +11,12 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
+
+//Header Files
 #include "clean.h"
 #include "sound.h"
 #include "font.h"
-#include "instructions.h"
-#include "scoring.h"
+
 
 
 //Defining Macro
@@ -25,7 +26,6 @@
 //Window Height Width
 #define WINDOW_WIDTH 1080
 #define WINDOW_HEIGHT 720
-#define SPEED (300) //Player Speed
 
 //To give same experience in every device
 #define FPS 60
@@ -36,68 +36,41 @@
 //Regarding Frame Time
 double last_frame_time;
 double delta_time;
-
-int pinterval=500;
-int einterval=5000;
-
-int shieldnumber=3;
-int sn=0;
-//variable to keep game state
-bool game_running = 1;
-
-//variable to state if game is played or not
-int gameplay = 0;
-
-//game over variable
-int gameover =0;
-
-//A variable for Story Showing
-int StoryScript = 0;
-
-//MainMenu Variable to keep track something pressed or not
-int keypressed = 0;
-
-//If Game is paused
-int pause = 0;
-
-//shield
- bool shield =0;
+int SPEED = 300;       //Player Speed
+int pinterval = 500;   //player fire interval
+int einterval = 5000;  //enemy fire interval
+int shieldnumber = 3;  //Number of Shield
+int sn = 0;            //Current Number of Shield
+bool game_running = 1; //variable to keep game state
+int gameplay = 0;      //variable to state if game is played or not
+int gameover = 0;      //game over variable denoting level finish and die or not
+int StoryScript = 0;   //A variable for Story Showing
+int keypressed = 0;    //used in mainmenu.h and game.h to keep track something pressed or not
+int pause = 0;         //Game is paused or not
+bool shield = 0;       //shield activated or not
 //Indicating Three Rows
 int row1 = 0;
 int row2 = 63;
 int row3 = 117;
-
-// keep track of which inputs are given
-int up = 0, down = 0, left = 0, right = 0;
-
-//Variables for keeping the sound state
-bool sound_state = 1;
-
-//bullet number
-int bn=0;
-
-//player shot or not
-int shot=0;
-
-//EnemyNumber
-int EnemyNumber=2;
-int TankNumber= 2;
-int InnocentNumber=2;
-
-//Variables for keeping the health and score state
-int phealth = 100;
-int pscore = 0;
+int up = 0, down = 0, left = 0, right = 0; // keep track of which inputs are given
+bool sound_state = 1;                      //Variables for keeping the sound state
+int bn = 0;                                //bullet number spent by player
+int shot = 0;                              //player shot bullet or not
+int EnemyNumber = 200;                     //Maximum EnemyNumber
+int TankNumber = 100;                      //Maximum TankNumber
+int InnocentNumber = 200;                  //Maximum EnemyNumber
+int phealth = 100;                         //Player health
+int pscore = 0;                            //Player Score
+int gamelevel = 1;                         //variable denoting game level
 
 //string for showing the font
 char scorestr[11];
 char shieldstr[11];
 char healthstr[11];
 
-int gamelevel=1;
 //SDL Window & Renderer
 SDL_Window *window;
 SDL_Renderer *renderer;
-
 
 //SDL Textures for mainmenu
 SDL_Texture *fpage = NULL;
@@ -143,30 +116,25 @@ SDL_Texture *t1t = NULL;
 SDL_Texture *bu = NULL;
 SDL_Texture *bu1 = NULL;
 SDL_Texture *storyback = NULL;
+SDL_Texture *shie = NULL;
 
+//Global Declaration of Player
 #include "player.h"
 Player p1;
+
+//Global Declaration of Enemies
 #include "enemy.h"
 Enemy e1[200];
+
+//Global Declaration of Tanks
 #include "tank.h"
 Tank t1[100];
+
+//Global Declaration of Innocents
 #include "innocent.h"
 Innocent i1[200];
-#include "bullet.h"
-Bullet b1[10000];
-//Bullet b2[10000];
 
-SDL_Texture *score_tex = NULL;
-        SDL_Color score_color = {255,255,255, 255};
-        Font fscore;
 
-SDL_Texture *shieldtex = NULL;
-        SDL_Color sn_color = {255,255,255, 255};
-        Font fsheild;
-SDL_Texture *leveltex = NULL;
-        SDL_Color level_color = {255,255,255, 255};
-        Font flevel;
-SDL_Texture *healthtex = NULL;
-        SDL_Color health_color = {255,255,255, 255};
-        Font fhealth;
+
+
 #endif

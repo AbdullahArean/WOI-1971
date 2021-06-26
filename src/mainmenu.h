@@ -97,7 +97,12 @@ void mainmenurender()
         TM.drawsame(405, 583, story, renderer);
 
     if (keypressed == 11 || keypressed == 12)
-        gameplay = 1;
+        {gameplay = 1;if (sound_state )
+        {
+            Mix_Music *bMusic3 = Mix_LoadMUS("assets/gameplay.mp3");
+            Mix_PlayMusic(bMusic3, -1);
+        }
+        }
 
     keypressed = 0;
 }
@@ -115,7 +120,11 @@ void mainmenuupdate()
             Mix_HaltMusic();
             keypressed = 11;
             //TM.drawsame(405, 95, conp, renderer);
-            //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
             if (sound_state)
             {
                 Mix_Chunk *horn = Mix_LoadWAV("assets/HornAmbience.wav");
@@ -127,7 +136,11 @@ void mainmenuupdate()
             Mix_HaltMusic();
             keypressed = 12;
             // TM.drawsame(405, 217, newgp, renderer);
-            //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
             //gameplay= 1; //change
             int duration = 1500; //Timespare per milisecond
             SDL_RenderClear(renderer);
@@ -163,27 +176,38 @@ void mainmenuupdate()
         {
             //Mix_HaltMusic();
             keypressed = 13;
-            //TM.drawsame(405, 339, hisp, renderer);
-            //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
-            // HighestScoreShow(pscore);
-            // SDL_RenderClear(renderer);
-            // TM.drawsame(0, 0, bg, renderer);
-            // SDL_RenderPresent(renderer);
-            // SDL_Delay(5000);
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
+            SDL_RenderClear(renderer);
+            TM.drawsame(0, 0, bg, renderer);
+            high();
+            SDL_RenderPresent(renderer);
+            SDL_Delay(5000);
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 461 && mousey <= 461 + 91)
         {
             //Mix_HaltMusic();
             keypressed = 20;
             //TM.drawsame(405, 461, settingsp, renderer);
-            //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 583 && mousey <= 583 + 91)
         {
             //Mix_HaltMusic();
             keypressed = 15;
             //TM.drawsame(405, 583, storyp, renderer);
-            //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
         }
     }
 }

@@ -31,6 +31,11 @@ void supdate()
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 10 && mousey <= 20 + 91)
         {
             sp=15;
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
 
             
         }

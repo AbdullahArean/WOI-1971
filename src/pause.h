@@ -60,14 +60,29 @@ void paupdate()
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 95 && mousey <= 95 + 91)
         {
             pkeypressed = 31;
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 217 && mousey <= 217 + 91)
         {
             pkeypressed = 32;
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 339 && mousey <= 339 + 91)
         {
             pkeypressed = 33;
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
         }
     }
 }

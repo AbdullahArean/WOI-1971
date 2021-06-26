@@ -1,2 +1,17 @@
-arean 1100
-Arean 50
+Arean 100
+Shanto 180
+Estona 160
+Tahian 170
+Shanto 560
+Arean 1900
+Shanto 10
+Estona 110
+Tahian 10
+Shanto 50
+Arean 1900
+Estona 1610
+Tahian 1710
+Shanto 560
+Rhino 1700
+Shanto 1810Arean 730
+Arean 1000

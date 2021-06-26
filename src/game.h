@@ -35,6 +35,8 @@ typedef struct Game
     //Rendering the game
     void render()
     {
+
+        
         //Presenting Renderer
         SDL_RenderPresent(renderer);
         // clear the window to black

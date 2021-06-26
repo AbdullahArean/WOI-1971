@@ -79,6 +79,7 @@ void lastpagerender()
     {
         game_running = 0;
         TM5.drawsame(405, 461, exip, renderer);
+        
     }
     else
         TM5.drawsame(405, 461, exi, renderer);
@@ -97,19 +98,38 @@ void lupdate()
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 95 && mousey <= 95 + 91)
         {
             lkeypressed = 11;
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 217 && mousey <= 217 + 91)
         {
-            lkeypressed = 12;
+            lkeypressed = 12;if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 339 && mousey <= 339 + 91)
         {
             lkeypressed = 13;
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 461 && mousey <= 461 + 91)
         {
-            Mix_HaltMusic();
+            
             lkeypressed = 14;
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
         }
     }
 }

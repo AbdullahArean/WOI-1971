@@ -20,17 +20,17 @@ void settingsrender()
     TM3.drawsame(0, 0, bg, renderer);
 
     if (keypressed == 21)
-        TM3.drawsame(405, 95, son, renderer);
-    else
         TM3.drawsame(405, 95, sonp, renderer);
+    else
+        TM3.drawsame(405, 95, son, renderer);
     if (keypressed == 22)
-        TM3.drawsame(405, 217, soff, renderer);
-    else
         TM3.drawsame(405, 217, soffp, renderer);
-    if (keypressed == 18)
-        TM3.drawsame(405, 339, mainmenu, renderer);
     else
+        TM3.drawsame(405, 217, soff, renderer);
+    if (keypressed == 18)
         TM3.drawsame(405, 339, mainmenup, renderer);
+    else
+        TM3.drawsame(405, 339, mainmenu, renderer);
     keypressed = 19;
 }
 
@@ -48,24 +48,35 @@ void settingsupdate()
             sound_state = 1;
             if (sound_state)
             {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
+            if (sound_state)
+            {
                 Mix_Music *bMusic2 = Mix_LoadMUS("assets/secondpage.mp3");
                 Mix_PlayMusic(bMusic2, -1);
             }
+
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 217 && mousey <= 217 + 91)
         {
             Mix_HaltMusic();
             keypressed = 22;
             sound_state = 0;
-            // TM.drawsame(405, 217, newgp, renderer);
-            //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
-            //gameplay= 1; //change
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 339 && mousey <= 339 + 91)
         {
             keypressed = 18;
-            //TM.drawsame(405, 339, hisp, renderer);
-            //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            if (sound_state)
+            {
+                Mix_Chunk *click = Mix_LoadWAV("assets/button.wav");
+                Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
+            }
         }
         
     }

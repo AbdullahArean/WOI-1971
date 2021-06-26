@@ -43,13 +43,13 @@ void gameplayinit()
 }
 void gameplayrender()
 {
-
     if (gameover == 1)
     {
         lastpagerender();
     }
     else
     {
+
         if (!ff)
         {
 
@@ -162,29 +162,31 @@ void gameplayrender()
         else if (gamelevel == 5 && pscore < 1900)
         {
             e1[16].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row3, 160 * 0.8, 180 * 0.8, e1t, renderer, SDL_FLIP_NONE);
+            
             e1[17].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row2, 160 * 0.8, 180 * 0.8, e1t, renderer, SDL_FLIP_NONE);
+            t1[1].TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300 * 0.8, 180 * 0.8, t1t, renderer, SDL_FLIP_NONE);
+                
             if (pscore > 1020)
                 e1[18].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 160 * 0.8, 180 * 0.8, e1t, renderer, SDL_FLIP_NONE);
-            if (pscore > 1100)
+            if (pscore > 1030)
                 e1[19].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row3, 160 * 0.8, 180 * 0.8, e1t, renderer, SDL_FLIP_NONE);
-            if (pscore > 1600)
+            if (pscore > 1080)
                 e1[20].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row2, 160 * 0.8, 180 * 0.8, e1t, renderer, SDL_FLIP_NONE);
 
-            if (pscore > 1400)
+            if (pscore > 1200)
             {
-                t1[1].TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300 * 0.8, 180 * 0.8, t1t, renderer, SDL_FLIP_NONE);
                 t1[2].TankRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 300 * 0.8, 180 * 0.8, t1t, renderer, SDL_FLIP_NONE);
                 e1[21].EnemyRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row3, 160 * 0.8, 180 * 0.8, e1t, renderer, SDL_FLIP_NONE);
             }
-            if (pscore > 1100)
-                i1[8].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 100 * 0.8, 180 * 0.8, i1t, renderer, SDL_FLIP_NONE);
-            if (pscore > 1200)
-                i1[9].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row2, 100 * 0.8, 180 * 0.8, i1t, renderer, SDL_FLIP_NONE);
             if (pscore > 1300)
-                i1[10].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 100 * 0.8, 180 * 0.8, i1t, renderer, SDL_FLIP_NONE);
+                i1[8].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 100 * 0.8, 180 * 0.8, i1t, renderer, SDL_FLIP_NONE);
             if (pscore > 1400)
-                i1[11].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 100 * 0.8, 180 * 0.8, i1t, renderer, SDL_FLIP_NONE);
+                i1[9].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row2, 100 * 0.8, 180 * 0.8, i1t, renderer, SDL_FLIP_NONE);
             if (pscore > 1500)
+                i1[10].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 100 * 0.8, 180 * 0.8, i1t, renderer, SDL_FLIP_NONE);
+            if (pscore > 1600)
+                i1[11].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 100 * 0.8, 180 * 0.8, i1t, renderer, SDL_FLIP_NONE);
+            if (pscore > 1700)
                 i1[12].InnocentRender(WINDOW_WIDTH - 160, WINDOW_HEIGHT - 180 - row1, 100 * 0.8, 180 * 0.8, i1t, renderer, SDL_FLIP_NONE);
         }
         else if (gamelevel == 5 && pscore == 1900)
@@ -309,27 +311,28 @@ void gameplayupdate()
         {
             e1[16].enemyupdate(row1, 45);
             e1[17].enemyupdate(row2, 55);
+            t1[1].tankupdate(row3, 44);
             if (pscore > 1020)
                 e1[18].enemyupdate(row3, 70);
-            if (pscore > 1100)
+            if (pscore > 1030)
                 e1[19].enemyupdate(row1, 75);
-            if (pscore > 1600)
+            if (pscore > 1080)
                 e1[20].enemyupdate(row2, 65);
-            if (pscore > 1400)
+            if (pscore > 1200)
             {
-                t1[1].tankupdate(row3, 44);
+                
                 t1[2].tankupdate(row1, 54);
                 e1[21].enemyupdate(row2, 45);
             }
-            if (pscore > 1100)
-                i1[8].Innocentupdate(row1, 40);
-            if (pscore > 1200)
-                i1[9].Innocentupdate(row2, 50);
             if (pscore > 1300)
-                i1[10].Innocentupdate(row3, 45);
+                i1[8].Innocentupdate(row1, 40);
             if (pscore > 1400)
-                i1[11].Innocentupdate(row1, 65);
+                i1[9].Innocentupdate(row2, 50);
             if (pscore > 1500)
+                i1[10].Innocentupdate(row3, 45);
+            if (pscore > 1600)
+                i1[11].Innocentupdate(row1, 65);
+            if (pscore > 1700)
                 i1[12].Innocentupdate(row2, 65);
         }
         //Player Bullet Update

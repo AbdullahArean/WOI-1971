@@ -34,6 +34,11 @@ typedef struct Bullet //Player Bullet structure
         {
             psi_x = x;
             psi_y = y;
+            if (sound_state)
+            {
+                Mix_Chunk *bullet = Mix_LoadWAV("assets/gunshot.wav");
+                Mix_PlayChannel(-1, bullet, 0); //Playing Sound Effect
+            }
             firsttime = 1;
         }
         //Updating Position
@@ -43,7 +48,6 @@ typedef struct Bullet //Player Bullet structure
         //Rendering or display
         if (bulletactive)
             SDL_RenderCopyEx(pRenderer, pTexture, &srcRect, &desRect, 0, 0, flip);
-        
     }
     void update(int dir) //Updating Bullet Position
     {
@@ -74,8 +78,8 @@ typedef struct Bullet //Player Bullet structure
             //Checking if any Tank Hit
             for (int i = 0; i < TankNumber; i++) //Checking Every Tank one by one
             {
-                int tposx = t1[i].ReturnPositionx(); //Getting x position 
-                int tposy = t1[i].ReturnPositiony(); //Getting y position 
+                int tposx = t1[i].ReturnPositionx(); //Getting x position
+                int tposy = t1[i].ReturnPositiony(); //Getting y position
                 //Checking if the bullet hit or not
                 if (psi_x >= tposx && psi_x <= tposx + 300 * 0.80 && psi_y >= tposy && psi_y <= tposy + 180 * 0.80)
                 {
@@ -87,7 +91,7 @@ typedef struct Bullet //Player Bullet structure
             }
             for (int i = 0; i < InnocentNumber; i++) //Checking Every Innocent one by one
             {
-                int iposx = i1[i].ReturnPositionx(); //Getting x position 
+                int iposx = i1[i].ReturnPositionx(); //Getting x position
                 int iposy = i1[i].ReturnPositiony(); //Getting y position
                 //Checking if the bullet hit or not
                 if (psi_x >= iposx && psi_x <= iposx + 160 * 0.80 && psi_y >= iposy && psi_y <= iposy + 180 * 0.80)

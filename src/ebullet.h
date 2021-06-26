@@ -35,6 +35,11 @@ typedef struct EBullet //Enemy Bullet structure
             psi_x = x;
             psi_y = y;
             firsttime = 1;
+            if (sound_state)
+            {
+                Mix_Chunk *bullet = Mix_LoadWAV("assets/gunshot.wav");
+                Mix_PlayChannel(-1, bullet, 0); //Playing Sound Effect
+            }
         }
         //Updating Position
         desRect.x = psi_x;

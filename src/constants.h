@@ -3,6 +3,7 @@
 
 //Preprocessors
 #include <stdio.h>
+#include <stdlib.h>
 
 //SDL Related Libraries
 #include <SDL2/SDL.h>
@@ -13,6 +14,8 @@
 #include "clean.h"
 #include "sound.h"
 #include "font.h"
+#include "instructions.h"
+#include "scoring.h"
 
 
 //Defining Macro
@@ -85,9 +88,16 @@ int InnocentNumber=2;
 int phealth = 100;
 int pscore = 0;
 
+//string for showing the font
+char scorestr[11];
+char shieldstr[11];
+char healthstr[11];
+
+int gamelevel=1;
 //SDL Window & Renderer
 SDL_Window *window;
 SDL_Renderer *renderer;
+
 
 //SDL Textures for mainmenu
 SDL_Texture *fpage = NULL;
@@ -145,7 +155,6 @@ Innocent i1[10];
 #include "bullet.h"
 Bullet b1[10000];
 //Bullet b2[10000];
-
 
 
 

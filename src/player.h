@@ -42,10 +42,15 @@ typedef struct Player
 
             if (shield && fs == 0)
             {
-                fs = 1;
+                if(shieldnumber-sn-1<0) shield=0;
+                else{
+                    fs = 1;
                 keeptracksh = SDL_GetTicks();
                 sn++;
                 printf("Shield remaining==>%d\n ", shieldnumber - sn);
+
+                }
+                
             }
             if (shield && keeptracksh && (SDL_GetTicks() - keeptracksh) >= 5000)
             {
@@ -55,7 +60,7 @@ typedef struct Player
             }
             if (shield == 1)
             {
-                sh.draw(psi_x + 180, psi_y, 20, 180, newg, renderer, SDL_FLIP_HORIZONTAL);
+                sh.draw(psi_x+180*0.75, psi_y, 20, 180, newg, renderer, SDL_FLIP_HORIZONTAL);
             }
         }
     }

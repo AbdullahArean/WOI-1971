@@ -95,6 +95,35 @@ void mainmenuupdate()
             // TM.drawsame(405, 217, newgp, renderer);
             //Mix_PlayChannel(-1, click ,0);//Playing Sound Effect
             //gameplay= 1; //change
+            int duration = 1500;//Timespare per milisecond
+            SDL_RenderClear(renderer);
+            TM.drawsame(0, 0, bg, renderer);
+            instruction(340 , 10 , "assets/fare.ttf", 40 , "***INSTRUCTIONS***");
+            SDL_RenderPresent(renderer);
+            SDL_Delay(duration);
+            instruction(10 , 100 , "assets/fare.ttf", 28 , "Use 'Up', 'Down', 'Right', 'Left' arrow key to move the player");
+            SDL_RenderPresent(renderer);
+            SDL_Delay(duration);
+            instruction(10 , 175 , "assets/fare.ttf", 28 , "Press 'Space' to fire and 'S' to activate Sheild");
+            SDL_RenderPresent(renderer);
+            SDL_Delay(duration);
+            instruction(10 , 250 , "assets/fare.ttf", 28 , "Killing Unarmed innocent People will decrease the health");
+            SDL_RenderPresent(renderer);
+            SDL_Delay(duration);
+            instruction(10 , 325 , "assets/fare.ttf", 28 , "Killing any armed enemy will increase the score");
+            SDL_RenderPresent(renderer);
+            SDL_Delay(duration);
+            instruction(10 , 400 , "assets/fare.ttf", 28 , "Leveling up will increase your shield number");
+            SDL_RenderPresent(renderer);
+            SDL_Delay(duration);
+            instruction(10 , 475 , "assets/fare.ttf", 28 , "Sheild will protect from any bullet firing");
+            SDL_RenderPresent(renderer);
+            SDL_Delay(2*duration);
+            if(sound_state)
+            {
+                Mix_Chunk *horn = Mix_LoadWAV("assets/HornAmbience.wav");
+                Mix_PlayChannel(-1, horn ,0);//Playing Sound Effect
+            }
         }
         if (mousex >= 405 && mousex <= 405 + 278 && mousey >= 339 && mousey <= 339 + 91)
         {

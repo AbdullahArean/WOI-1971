@@ -51,7 +51,7 @@ typedef struct Bullet
                 int eposx = e1[i].ReturnPositionx();
                 int eposy = e1[i].ReturnPositiony();
 
-                if (psi_x >= eposx && psi_x <= eposx + 160*0.80 && psi_y >= eposy && psi_y <= eposy + 180*0.80)
+                if (psi_x >= eposx && psi_x <= eposx + 160 * 0.80 && psi_y >= eposy && psi_y <= eposy + 180 * 0.80)
                 {
                     bulletactive = 0;
                     pscore += 10;
@@ -65,7 +65,7 @@ typedef struct Bullet
                 int tposx = t1[i].ReturnPositionx();
                 int tposy = t1[i].ReturnPositiony();
 
-                if (psi_x >= tposx && psi_x <= tposx + 300*0.80 && psi_y >= tposy && psi_y <= tposy + 180*0.80)
+                if (psi_x >= tposx && psi_x <= tposx + 300 * 0.80 && psi_y >= tposy && psi_y <= tposy + 180 * 0.80)
                 {
                     bulletactive = 0;
                     pscore += 20;
@@ -79,7 +79,7 @@ typedef struct Bullet
                 int iposx = i1[i].ReturnPositionx();
                 int iposy = i1[i].ReturnPositiony();
 
-                if (psi_x >= iposx && psi_x <= iposx + 160*0.80 && psi_y >= iposy && psi_y <= iposy + 180*0.80)
+                if (psi_x >= iposx && psi_x <= iposx + 160 * 0.80 && psi_y >= iposy && psi_y <= iposy + 180 * 0.80)
                 {
                     bulletactive = 0;
                     phealth -= 25;

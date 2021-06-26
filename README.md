@@ -101,10 +101,9 @@ The Hero of this game is a freedom fighter named “Aresan” whose objective is
 The War of Independence is a great event in the national history of Bangladesh. There are a few games developed on this event though 50 years passed of our independence. It is high time we made a stunning game on this event and made the world aware of the heroism of the Bangladeshi people in 1971. The game will be developed in a 2D SDL2/C++ initially for the project, but we have aspirations to make it across all platforms(Android, IOS, Windows) 3D game using the power of Unreal Engine, Unity, Autodesk, Blender etc. later on.
 
 ## **Github Repository**
-
-        https://github.com/AbdullahA971rean/WOI-1971
+https://github.com/AbdullahA971rean/WOI-1971
 ## **YouTube Intro Video Link**
-        https://youtu.be/1e38v-MTL8w
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1e38v-MTL8w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ## **References**
 ### SDL Learning Sources:
         https://lazyfoo.net/tutorials/SDL/

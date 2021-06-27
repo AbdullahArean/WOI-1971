@@ -43,38 +43,83 @@ The Hero of this game is a freedom fighter named “Aresan” whose objective is
 
 ## Project Features
 
-  1. **Simple, clear and easily customizable code** in a structured and modulerized manner with proper commenting.
-  2. Easy installation in **Debian-Based** Computers and one-click installation process **Direct Install and Play** (bash script will download everything required)
-  3. One Command Game **update & ugrade** to latest release feature
-  4. Attractive and **dynamic** menu options to control the game
-  5. **Crispy Sound System** Specifications and sound on/off feature
-  6. Simple yet interesting **game logic** and 100% control 
-  7. **Multiple enemy** types and different enemy attacks (Paddle Enemy, Tank etc.)
-  8. Powerful hero and its **simultaneous** health and game-score update and display
-  9. Displaying **Highscore** and saving Score with player name, bullet spent, player health
-  10. Memory efficient design and **Same performance** in every device (if possible to play) 
-  11. Online presence of code with powerful **GitHub Repository** with informative [Readme.md](https://github.com/AbdullahArean/WOI-1971#readme). Clean GitHub **Workflow** with best practices of git.
+  1. Simple, clear and easily customizable code in a structured and modularized manner with proper commenting.
+  2. Easy installation in Debian-Based Computers and one-click installation process Direct Install and Play (bash script will download everything required)
+  3. Memory efficient design and Same performance in every device (if possible to play)
+  4. One Command Game update & upgrade to the latest release feature with “./update.h command”
+  5. A Loading page with the game logo (Custom Created)
+  ![WOI-1971 Logo](assets/p1.jpg)
+  6. Attractive and dynamic menu options to control the game
+  ![WOI-1971 Logo](assets/p2.jpg)
+  7. Showing Instructions on the created window
+  ![WOI-1971 Logo](assets/p7.jpg)
+  8. Challenging Levels with Multiple Enemy Types
+  ![WOI-1971 Logo](assets/p8.jpg)
+  9. Here are Innocent People too. If the hero kills them, he will get a penalty. And There is also an interesting feature, that players have shields, which will protect it from firing damage.
+ ![WOI-1971 Logo](assets/p9.jpg)
+  10. Crispy Sound System Specifications and sound on/off feature
+  ![WOI-1971 Logo](assets/p10.jpg)
+  11. There is also a Story page where we can see and learn about some stories related to our independence war.
+  ![WOI-1971 Logo](assets/p11.jpg)
+  12. Simple yet interesting game logic and 100% control
+  13. Powerful hero and its simultaneous health and game-score update and display
+  14. Displaying High Score on the created window
+  ![WOI-1971 Logo](assets/p14.jpg)
+  15. A last page is designed to get Usernames(i.e. who is playing) by clicking the “Save Score” option
+  ![WOI-1971 Logo](assets/p151.jpg)
+![WOI-1971 Logo](assets/p152.jpg)
+  16.Online presence of code with powerful GitHub Repository with informative Readme.md. Clean GitHub Workflow with best practices of git.
+
 
 ## **Project Files & Modules**
-1. **main.cpp**
-2. **bullet.h**
-3. **clean.h**
-4. **constants.h**
-5. **game.h**
-6. **gameplay.h**
-7. **player.h**
-8. **enemy.h**
-9. **tank.h**
-10. **innocent.h**
-11. **texturemanager.h**
-12. **sound.h**
-13. **font.h**
-14. **initialization.h**
-15. **mainmenu.h**
-16. **settings.h**
-17. **pause.h**
-18. **lastpage.h**
-19. **scoring.h**
+1. main.cpp
+Calling a struct Game variable and using its functions init(), running(), handleEvents(), update(), and render() in the main() function for initializing, running loop, handling the events, updating the game and game objects and rendering the objects respectively. Moreover, we are quitting the game by calling the destroy_window() function from the ‘Game’ structure.
+
+2. bullet.h
+A structure for bullets of the player with two functions “Bulletfire” and “update”. Bullet first time rendered in Bulletfire function. In the update function, bullet position changes, and all the enemies, tanks and innocent is checked if hit by the bullet or not. After that update of player health, score, enemy health executed accordingly.
+3. ebullet.h
+A structure for bullets of the enemy (enemy & tank) with two functions “Bulletfire” and “update”. Bullet first time rendered in Bulletfire function. In the update function, bullet position changes, and the player is checked if hit by the  bulet or not. After that update of player health, the score executed accordingly.
+4. clean.h
+Destroying window and renderer by using the function Clean() and quitting all the subsystems such as video, audio, image, font.
+5. constants.h
+All the constants and SDL-related directory is linked there, and building c preprocessors. For this reason, these include does not need to do in the rest of the files, we used constants.h .
+6. game.h
+This file contains game structure with four major functions, initialization, handle events, update, render where many header files are included and many functions are called. checker function if game is running is to easily access the game state.
+7. gameplay.h
+Here “gameplay.h” is the main header file with multiple functions, that truly makes the gameplay. All the necessary files are included here and called here. Player, enemy, tank, innocent is called here according to game logic. Level-wise distribution of work will be found here.
+8. player.h
+Player structure denoting the main character of the game, render, draw and update the player. There is also shield maintenance. If the shield is on it is displayed. Player movement can be done along all the direction. Flexible player position input and render made the game more interesting. There is also a function to return the position of the Player.
+9. enemy.h
+A structure is made for rendering and loading the enemy as well as keep track of its position and velocity. 
+10. tank.h
+In this section, the tank is being rendered and loaded. Moreover, Kept the tracking of the tank’s current position along with its velocity. 
+11. innocent.h
+These three structures are the same type of function with slight differences, quite similar to player.h, they have their own function to init, render, handle events and update themselves. it can return its position and update its health accordingly. This function enables us to access its private variable can be accessed from any file easily
+12. texturemanager.h
+Loading textures and rendering them in this section made easy by this header file. One line code now can do a lot of works.
+13. sound.h
+Some sound-related variables and some built-in functions related to the sound/audio system have been used to control the sound system.
+14. mainmenu.h
+There are Continue, New Game, Highest Score, Settings and Story options in the main menu which are rendered and updated there.
+15. last page.h
+The header is used to render and update the Replay, Next Level, Save Score and Exit buttons in the last page.
+16. highscore.h
+The code for showing the top 5 scores has been implemented in this section by calling high() function.
+17. pause.h
+Rendering and updating the Continue, Exit and Main Menu options. 
+18. settings.h
+Controlling the sound system by using logic and can go back to the main menu.
+19. instruction.h
+This header has been implemented to show the instructions and congratulations messages on the created window. 
+20. font.h
+A FontManager structure is created to load the font and display them on the created window by using two different functions.
+21. initialization.h
+Initialized all the subsystems used in the whole game(i.e. audio, image, font etc).
+22. install.sh
+Simple bash scripting file to install of the game along with the dependencies . SDL2 Library and Github will be installed if not in the Linux device and Will Clone the remote github repository, then build the project making an executable “WOI-1971” file.    
+23. update.sh
+Simple bash scripting file to install the latest update of the game project. The github repository is the main source now. the file will discard all the changes user made to the code and will pullall the latest changes developer made in the main github repository.
+
 
 ## **Credit**
 1. **Abdullah Ibne Hanif Arean** [*Linkedin Profile*](https://www.linkedin.com/in/abdullaharean/)
@@ -94,8 +139,11 @@ The Hero of this game is a freedom fighter named “Aresan” whose objective is
 
 ## **Limitations**
 1. Movement of the characters donot have attractive animation, graphics is yet to be developed
-2. Though game level is easy to create in this customizable game, not implemented that much till now.
+2. As it is written in C only, no upgraded feature of c++ is  available
 3. Written in C,in structured manner, no object oriented code written or used.
+4. Problem Regarding HighScore Displaying, a toilsome bug yet to be solved
+5. Replay of the game still to develop
+
 
 ## **Future plan**
 The War of Independence is a great event in the national history of Bangladesh. There are a few games developed on this event though 50 years passed of our independence. It is high time we made a stunning game on this event and made the world aware of the heroism of the Bangladeshi people in 1971. The game will be developed in a 2D SDL2/C++ initially for the project, but we have aspirations to make it across all platforms(Android, IOS, Windows) 3D game using the power of Unreal Engine, Unity, Autodesk, Blender etc. later on.
@@ -108,11 +156,11 @@ https://github.com/AbdullahA971rean/WOI-1971
 
 ## **References**
 ### SDL Learning Sources:
-        https://lazyfoo.net/tutorials/SDL/
-        https://www.packtpub.com/product/sdl-game-development/
-        https://www.parallelrealities.co.uk/
+https://lazyfoo.net/tutorials/SDL/
+https://www.packtpub.com/product/sdl-game-development/
+https://www.parallelrealities.co.uk/
 ### Free Image Source: 
-        https://www.freepik.com/
+https://www.freepik.com/
 
 ## **License**
 **Free Software, Hell Yeah!**

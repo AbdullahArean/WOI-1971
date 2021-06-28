@@ -183,7 +183,7 @@ void mainmenuupdate()
             }
             SDL_RenderClear(renderer);
             TM.drawsame(0, 0, bg, renderer);
-            high();
+            highscoreshow();
             SDL_RenderPresent(renderer);
             SDL_Delay(5000);
         }

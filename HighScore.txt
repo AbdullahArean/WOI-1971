@@ -1,5 +1,5 @@
 Arean 1900
-Shanto 1810
-Tahian 1710
-Rhino 1700
-Estona 1610
+Shanto 560
+Shanto 180
+Tahian 170
+Estona 160

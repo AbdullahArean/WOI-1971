@@ -129,8 +129,7 @@ The Hero of this game is a freedom fighter named “Aresan” whose objective is
 1. Movement of the characters donot have attractive animation, graphics is yet to be developed
 2. As it is written in C only, no upgraded feature of c++ is  available
 3. Written in C,in structured manner, no object oriented code written or used.
-4. Problem Regarding HighScore Displaying, a toilsome bug yet to be solved
-5. Replay of the game still to develop
+4. Replay of the game still to develop
 
 
 ## **Future plan**

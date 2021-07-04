@@ -153,7 +153,7 @@ void highscoreshow()
 
     for (j = 0; j < factor; j++)
     {
-        printf("%s %d\n", arr[j].name, arr[j].score);
+        //printf("%s %d\n", arr[j].name, arr[j].score);
         //printf("A");
     }
     //check++;

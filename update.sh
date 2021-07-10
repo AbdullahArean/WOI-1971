@@ -4,7 +4,7 @@
 git reset --hard HEAD;
 echo “All Changes Made to game code by user discarded”
 
-#Geting Latest Code
+#Geting Latest Code avilable on Github
 echo “Game Updating.....................”
 git pull;
 

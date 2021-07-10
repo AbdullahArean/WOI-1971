@@ -96,7 +96,6 @@ SDL_Texture *soff = NULL;
 SDL_Texture *soffp = NULL;
 SDL_Texture *mainmenu = NULL;
 SDL_Texture *mainmenup = NULL;
-SDL_Texture *ppt = NULL;
 SDL_Texture *exi = NULL;
 SDL_Texture *exip = NULL;
 

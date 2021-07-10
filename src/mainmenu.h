@@ -28,7 +28,6 @@ void mainmenuinit()
     e2t = TM.ReturnTexture("assets/enemy1.png", renderer);
     i1t = TM.ReturnTexture("assets/innocent.png", renderer);
     t1t = TM.ReturnTexture("assets/tank1.png", renderer);
-    ppt = TM.ReturnTexture("assets/pp.png", renderer);
     bu = TM.ReturnTexture("assets/bu.png", renderer);
     bu1 = TM.ReturnTexture("assets/bu1.png", renderer);
     shie = TM.ReturnTexture("assets/shield.png", renderer);

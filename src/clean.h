@@ -29,7 +29,6 @@ void Clean(SDL_Window *win, SDL_Renderer *render)
     SDL_DestroyTexture(soff);
     SDL_DestroyTexture(mainmenu);
     SDL_DestroyTexture(mainmenup);
-    SDL_DestroyTexture(ppt);
     SDL_DestroyTexture(exi);
     SDL_DestroyTexture(exip);
     SDL_DestroyTexture(gbg);

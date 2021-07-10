@@ -240,7 +240,6 @@ void gameplayupdate()
 
             if (mousex >=WINDOW_WIDTH-135 && mousex <= WINDOW_WIDTH-55 && mousey >=37 && mousey <= 124)
             {
-                TM2.drawsame(1005, 21, ppt, renderer);
                 pause = 1;
             }
         }
